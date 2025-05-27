@@ -10,30 +10,33 @@ use App\Models\PARAMETROS;
 use App\Models\Personas;
 use App\Models\TIPOSEVENTOS;
 use App\Models\User;
-class CPersonas extends Controller
+
+class CParametros extends Controller
 {
-     //Funcion que consulta la Tabla Tipos personas y devuelve todos los registros.
-    public function consultarPersonas(){
+public function consultarParametros(){
         $variable = 0;
-        $personas = Personas::orderBy('ID')->get();
-        foreach($personas as $persona)
+        $parametros = PARAMETROS::orderBy('CODIGO')->get();
+        foreach($parametros as $parametro)
         {
-            $tipos[$variable] = array(
-                
-                'ID' => trim($persona->ID),
-                'NOMBRES' => trim($persona->NOMBRES),
-                'APELLIDO' => trim($persona->APELLIDO),
-                'EMAIL' => trim($persona->EMAIL),
-                'TELEFONO' => trim($persona->TELEFONO),
-                'USUARIO' => trim($persona->USUARIO),
-                'IDENTIFICACION' => trim($persona->IDENTIFICACION)
-            );
-            $variable++;
+            var_dump($parametros->id);
+    foreach($parametros as $parametro)
+    {
+     $tipos[$variable] = array(
+                'CODIGO' => trim($parametro->CODIGO),
+                'CURSO' => trim($parametro->CURSO),
+                'ESPUBLICO' => trim($parametro->ESPUBLICO),
+                'ESPAGADO' => trim($parametro->ESPAGADO),
+                'VALOR' => trim($parametro->VALOR),
+                'HORAS' => trim($parametro->HORAS));
+            $variable++;  
+    }
+        
         }
+
 
         if($variable > 0)
         {
-            $data = array(
+            $data = array( 
                 'status' => 'OK',
                 'code' => 200,
                 'tipos' => $tipos
@@ -44,7 +47,7 @@ class CPersonas extends Controller
             $data = array(
                 'status' => 'error',
                 'code' => 404,
-                'message' => 'No existen registros'
+                'message' => 'No existen parametros'
             );
         }
 
@@ -55,24 +58,24 @@ class CPersonas extends Controller
 
 
 //Funcion con sql con condicion
-public function personasParametros($Id){
+public function parametroIndividual($id){
         $variable =0;
         //$personas= TIPOSEVENTOS::orderBy('ID')->get();
-        $personas = Personas::where(
+        $parametros = Parametros::where(
                      [ 
-                         ['ID',$Id]
+                         ['CODIGO',$id]
                      ])->get();
- foreach($personas as $evento)
+ foreach($paramtetros as $parametro)
                 {
-         $tipos[$variable] = array(     
-            'ID' => trim($evento->ID),
-            'NOMBRES' => trim($evento->NOMBRES),
-            'APELLIDO' => trim($evento->APELLIDO),
-            'EMAIL' => trim($evento->EMAIL),
-            'TELEFONO' => trim($evento->TELEFONO),
-            'USUARIO' => trim($evento->USUARIO),
-            'IDENTIFICACION' => trim($evento->IDENTIFICACION)
+         $var[$variable] = array(     
+            'CODIGO' => trim($parametro->CODIGO),
+                'CURSO' => trim($parametro->CURSO),
+                'ESPUBLICO' => trim($parametro->ESPUBLICO),
+                'ESPAGADO' => trim($parametro->ESPAGADO),
+                'VALOR' => trim($parametro->VALOR),
+                'HORAS' => trim($parametro->HORAS)
             );
+            
 
          $variable++;
                 }
@@ -81,7 +84,7 @@ if($variable>0)
 $data = array(
           'status'=>'OK',
           'code'=>200, 
-          'tipos'=>$tipos);
+          'tipos'=>$var);
 }else
 {
 $data = array(
@@ -95,7 +98,7 @@ $data = array(
 
                             }
 //Funcion con sql PAReA INSERTAR
-public function nuevaPersona(Request $request){
+public function nuevoEventoParamtro(Request $request){
         $json = $request->input('json',null);
         $params = json_decode($json);//esto me devuelve un objeto
         $params_array = json_decode($json,true);//esto em devuelve un array
@@ -110,71 +113,65 @@ public function nuevaPersona(Request $request){
      
         //Validar los datos
         $validate = \Validator::make($params_array, [
-    'NOMBRES' => 'required',
-    'APELLIDOS' => 'required',
-    'EMAIL' => 'required|email',
-    'TELEFONO' => 'required',
-    'USUARIO' => 'required',
-'IDENTIFICACION' => 'required|unique:TPERSONAS,IDENTIFICACION'
+    'CODIGO' => 'required',
+    'CURSO' => 'required',
+    'HORAS' => 'required'
 
     ]);
     if($validate->fails()){
            $data = array(
           'status'=>'error',
           'code'=>404, 
-          'message'=>'Variable nombre,email,telefono,
-          usuario,identificacion requeridos',
+          'message'=>'Variable Codigo, curso, horas requeridos',
           'error'=>$validate->errors()
         );
     }else
     {
              
-        //Crear Tipospersonas
-    $personas = new Personas();
-    $personas->NOMBRES = ($params_array['NOMBRES']);
-    $personas->APELLIDOS = ($params_array['APELLIDOS']);
-    $personas->EMAIL = $params_array['EMAIL'];
-    $personas->TELEFONO = $params_array['TELEFONO'];
-    $personas->USUARIO = $params_array['USUARIO'];
-    $personas->IDENTIFICACION = $params_array['IDENTIFICACION'];
-    
+        //Crear user
+    $users = new User();
+    $users->Nombre = strtoupper($params_array['Nombre']);
+    $users->Email = ($params_array['Email']);
+    $users->Password = $params_array['Password'];
 //Guardar el evento
- try {
-    $personas->save();
-
-    $data = [
-        'status' => 'success',
-        'code' => 200,
-        'message' => 'La Persona se ha creado correctamente'
-    ];
-} catch (\Exception $e) {
-    $data = [
-        'status' => 'error',
-        'code' => 500,
-        'message' => 'Error al guardar',
-        'error' => $e->getMessage()
-    ];
-}}}
-
+  $users->save();
+    
+  //enviar la respuesta
+          $data = array(
+          'status'=>'succes',
+          'code'=>200, 
+          'message'=>'El User se ha creado correctamente'
+        );
+    }
+        }else
+        {
+           $data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'Los datos enviados no son correctos'
+        );  
+        }
 
         return response()->json($data,$data['code']);
     }
+
+
 // Funcion para eliminar registro por el nombre
-public function eliminarpersonas($id,Request $request)
+public function eliminarUsuario($id,Request $request)
     {
      //comseguir el post
-     $personas= Personas::find($id);
+     $users= User::find($id);
      
-     if(!empty($personas))
+     if(!empty($users))
         {
      //borrarlo
-     $personas->delete();
+     $users->delete();
      //devolver
      
      $data = array(
           'status'=>'success',
           'code'=>200, 
-          'message'=>$personas
+          'message'=>$users
         );
         }else
         {
@@ -224,4 +221,4 @@ public function updatePersonas($id,Request $request){
          }
          return response()->json($data,$data['code']);
      }
-}
+    }

@@ -31,8 +31,8 @@ Route::put('/api/updateEventos/{parametro}',['\App\Http\Controllers\CTiposdeEven
 Route::get('/api/getPersonas',['\App\Http\Controllers\CPersonas', 'consultarPersonas']);
 Route::get('/api/getPersonasParametros/{parametro}',['\App\Http\Controllers\CPersonas', 'personasParametros']);
 Route::post('/api/nuevaPersona',['\App\Http\Controllers\CPersonas', 'nuevaPersona']);
-Route::delete('/api/eliminarEvento/{parametro}',['\App\Http\Controllers\CPersonas', 'eliminarEventos']);
-Route::put('/api/updateEventos/{parametro}',['\App\Http\Controllers\CPersonas', 'updateEventos']);
+Route::delete('/api/eliminarPersona/{parametro}',['\App\Http\Controllers\CPersonas', 'eliminarpersonas']);
+Route::put('/api/updatePersonas/{parametro}',['\App\Http\Controllers\CPersonas', 'updatePersonas']);
 
 //Rutas que direcionan a la tabla USUARIOS
 Route::get('/api/getUsuarios',['\App\Http\Controllers\CUser', 'consultarUsers']);

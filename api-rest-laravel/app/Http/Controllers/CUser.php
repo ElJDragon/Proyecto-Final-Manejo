@@ -19,16 +19,27 @@ class CUser extends Controller
         $users = User::orderBy('id')->get();
         foreach($users as $user)
         {
-            $tipos[$variable] = array(
+            var_dump($user->id);
+            $personas = Personas::where(
+                     [ 
+                         ['USUARIO',$user->id]
+                     ])->get();
+    foreach($personas as $persona)
+    {
+     $tipos[$variable] = array(
                 'name' => trim($user->Nombre),
                 'email' => trim($user->Email),
-                'password' => trim($user->Password));
-            $variable++;
+                'password' => trim($user->Password),
+                'IDENTIFICACION' => trim($persona->IDENTIFICACION));
+            $variable++;  
+    }
+        
         }
+
 
         if($variable > 0)
         {
-            $data = array(
+            $data = array( 
                 'status' => 'OK',
                 'code' => 200,
                 'tipos' => $tipos
@@ -146,21 +157,21 @@ public function nuevoUser(Request $request){
 
 
 // Funcion para eliminar registro por el nombre
-public function eliminarpersonas($id,Request $request)
+public function eliminarUsuario($id,Request $request)
     {
      //comseguir el post
-     $personas= Personas::find($id);
+     $users= User::find($id);
      
-     if(!empty($personas))
+     if(!empty($users))
         {
      //borrarlo
-     $personas->delete();
+     $users->delete();
      //devolver
      
      $data = array(
           'status'=>'success',
           'code'=>200, 
-          'message'=>$personas
+          'message'=>$users
         );
         }else
         {
