@@ -1,0 +1,249 @@
+  <section id="contact" class="contact">
+
+        <!-- MODAL PARA ELIMINAR -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+<div style="background-image: url('/assets/img/carreter.jpg'); background-size: cover; background-position: center; height: 24vh; margin: 0; ">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Está seguro de eliminar el Usuario
+      </div>
+      <div class="modal-footer">
+ <a style="background-color: #B9C585;" class="btn-redondeado" data-dismiss="modal">Cerrar</a>
+&nbsp;&nbsp;            
+ <a (click)="eliminarUsuario()" class="btn-redondeado">Eliminar<i class="fa fa-arrow-right ms-3"></i></a>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+            
+
+
+
+
+  <form action="forms/contact.php" method="post" role="form" class="info php-email-form" >
+
+
+
+  <div class="row mt-5">
+
+
+<div class="row">
+
+
+
+          <div  class="col-xs-6 text-center">
+
+
+
+
+
+            <br>
+            <form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+
+
+
+
+
+<span class="texto-borde">Usuarios Existentes</span>
+             <hr>
+             <br>
+<div class="row d-flex justify-content-center">
+
+
+
+
+<table class="table table-bordered">
+  <thead class="col-lg-4">
+    <tr  align="center" >
+     <th class="col-0" >
+      <span class="fw-bold text-secondary"><i class="fa fa-book fa-2x me-3"></i></span>
+
+      </th>  
+      <th class="col-3">
+        <input   (keyup)="getResponsablesParametros()" style="text-transform:uppercase; border-color:#D81324; width: 200px; height:30px;" type="text" name="nombres" class="form-control"  id="pnombres">
+      </th>
+     <th class="col-3"></th>
+      <th class="col-2"></th>
+      <th class="col-2"><a *ngIf="isbusqueda" style="color:#000" (click)="ngOnInit()" class="get-started-btn scrollto"><img width="45" height="28" src="/assets/img/limpiar.png"></a></th>
+    </tr>
+    <tr align="center">
+      <th class="col-0">Código</th>
+      <th class="col-3">Nombres</th>
+      <th class="col-3">Usuario</th>
+      <th class="col-2">Rol</th>
+       <th class="col-2">Editar</th>
+      
+    </tr>
+  </thead>
+      <tbody >
+
+    <tr *ngFor="let responsable of paginacion">
+      <th class="col-0" style=" font-size:100%">{{responsable.id}}</th>
+
+
+      <td *ngIf="this.codigomodificar!=responsable.id" class="col-2" style=" font-size:80%">{{responsable.Nombre}}</td>
+
+<!-- CAMPO A EDITAR-->
+<td *ngIf="isedicion && this.codigomodificar==responsable.id" class="col-2" style=" font-size:80%">
+  <input  style="text-transform:uppercase; border-color:#D81324; width: 200px; height:30px;" type="text" name="nombreedi" value="{{responsable.Nombre}}" class="form-control" id="nombreedi">
+</td>
+
+
+      <td *ngIf="this.codigomodificar!=responsable.id" class="col-3" style=" font-size:80%">{{responsable.Email}}</td>
+<!-- CAMPO A EDITAR-->
+<td *ngIf="isedicion && this.codigomodificar==responsable.id" class="col-2" style=" font-size:80%">
+  <input  style=" border-color:#D81324; width: 200px; height:30px;" type="text" name="emailedi" value="{{responsable.Email}}" class="form-control" id="emailedi">
+</td>
+
+
+      <td *ngIf="this.codigomodificar!=responsable.id"class="col-1" style=" font-size:80%">{{responsable.role}}</td>
+<!-- CAMPO A EDITAR-->
+  <td *ngIf="isedicion && this.codigomodificar==responsable.id" >
+      <div >
+  <input readonly style="border-color:#D81324; width: 150px; height:30px;" class="form-control"  type="text" id="departamentoedi" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off" value="{{responsable.role}}">
+  <div  class="dropdown-menu dropdown-content" aria-labelledby="dropdownMenuButton" >
+  <div  *ngFor="let departamento of this.roles" (click)="pasarvalor(departamento.name,departamento.value)" style="background-color:#D81324;">
+    <a  class="dropdown-item" >{{departamento.value}}</a>
+  </div>
+  </div>
+</div>
+
+</td>
+
+
+
+
+
+
+
+      <th class="col-1">
+<a title="Actualizar" (click)="actualizar(responsable.id,responsable.role)" *ngIf="!isedicion" class="get-started-btn scrollto" style="padding: 0px 5px 0px 5px;"><img (click)="actualizar(responsable.id,responsable.role)" width="20" height="20" src="/assets/img/actualizar1.png"></a>
+
+
+
+<a title="Eliminar" *ngIf="!isedicion" (click)="codigoUsuario(responsable.id)" data-toggle="modal" data-target="#exampleModal" class="get-started-btn scrollto" style="padding: 0px 8px 2px 5px;"><img data-toggle="modal"  data-target="#exampleModal" width="15" height="15" src="/assets/img/eliminar.png" (click)="codigoUsuario(responsable.id)" ></a>
+
+
+        <a  title="Guardar" (click)="modificarregistro()" *ngIf="isedicion && this.codigomodificar==responsable.id" class="get-started-btn scrollto" style="padding: 0px 5px 0px 5px;"><img width="15" height="15" src="/assets/img/guardar.png"></a>
+
+
+    <a  title="Cancelar" *ngIf="isedicion && this.codigomodificar==responsable.id" (click)="cancelar()" class="get-started-btn scrollto" style="padding: 0px 5px 0px 5px;"><img (click)="cancelar()" width="15" height="15" src="/assets/img/cancelar.png"></a>
+
+
+    
+        </th>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div *ngIf="solo1">
+<br><br><br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo2">
+<br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo3">
+<br><br><br><br><br>
+</div>
+<div *ngIf="solo4">
+<br><br><br>
+</div>
+
+<div *ngIf="solo5">
+<br><br>
+</div>
+
+<table>
+
+
+
+<th *ngIf="ispaginacion"  >
+    <nav aria-label="Page navigation example" >
+
+  <ul class="pagination" >
+    
+    <li *ngIf="atras" class="page-item"  ><a class="page-link" (click)="Paginacion(0)">        
+      <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    <li *ngIf="!atras" class="page-item disabled"><a class="page-link">        <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    
+    <li *ngIf="uno" class="page-item active"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+    <li *ngIf="!uno" class="page-item"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+
+    <li *ngIf="dos && dosd" class="page-item active" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dos && dosd" class="page-item" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dosd" class="page-item disabled" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+
+
+    <li *ngIf="tres && tresd" class="page-item active"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tres && tresd" class="page-item"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tresd" class="page-item disabled"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    
+
+      <li *ngIf="delante" class="page-item"><a class="page-link" (click)="Paginacion(4)">
+        <img width="20" height="20" src="/assets/img/siguiente.png">
+      </a>
+      <li *ngIf="!delante" style="color:#E4A42B" class="page-item disabled"><a class="page-link"><img width="20" height="20" src="/assets/img/siguiente.png"></a>
+    </li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<img title="Ingresar Nuevo" routerLink="/creapersona/" width="40" height="40" src="/assets/img/agregar.png">
+
+
+  </ul>
+
+</nav>
+</th>
+
+
+<tr>
+<th>
+  <div style="padding: 6px 10px 7px 10px;" class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success' && istemporal">
+El registro se ha eliminado correctamente
+</div>
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error' && istemporal">
+Error al eliminar registro
+</div>   
+  <div style="padding: 6px 10px 7px 10px;" class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success1' && istemporal">
+El registro se ha actualizado correctamente
+</div>
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error1' && istemporal">
+Error al actualizar registro
+</div> 
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="errorvacio">
+Existen campos vacíos
+</div>
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="errortelefono">
+El número de télefono debe tener 10 dígitos
+</div>
+</th></tr>
+</table>
+</div>
+
+
+            </form>
+
+          </div>
+</div>
+        </div>
+
+
+
+</form>
+
+    </section><!-- End Contact Section -->
+
+
+      
+
