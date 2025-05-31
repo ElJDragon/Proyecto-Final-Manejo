@@ -55,3 +55,29 @@ Route::post('/api/nuevaEvento',['\App\Http\Controllers\CTiposdeEventos', 'nuevoE
 
 
 
+//RUTAS PARA TIPOS CARRERAS
+Route::get('/api/carreras',['\App\Http\Controllers\CCarreras', 'consultarCarreras']);
+Route::get('/api/carrerasLike/{id}',['\App\Http\Controllers\CCarreras', 'carrerasLike']);
+Route::put('/api/updateCarrera/{id}',['\App\Http\Controllers\CCarreras', 'updateCarreras']);
+Route::delete('/api/eliminaCarrera/{id}',['\App\Http\Controllers\CCarreras', 'eliminarCarreras']);
+Route::post('/api/nuevaCarrera',['\App\Http\Controllers\CCarreras', 'nuevaCarrera']);
+
+
+//RUTAS PARA TIPOS PERSONAS
+Route::get('/api/personas',['\App\Http\Controllers\CPersonas', 'consultarPersonas']);
+Route::get('/api/personasLike/{idNOMBRE}/{idAPELLIDO}',['\App\Http\Controllers\CPersonas', 'personasLike']);
+Route::put('/api/updatePersona/{id}',['\App\Http\Controllers\CPersonas', 'updatePersonas']);
+Route::delete('/api/eliminaPersona/{id}',['\App\Http\Controllers\CPersonas', 'eliminarpersonas']);
+
+
+
+
+//PERFIL DE USUARIO
+
+Route::get('/api/provincias',['\App\Http\Controllers\ProfileController', 'getProvincias']);
+Route::get('/api/cantones',['\App\Http\Controllers\ProfileController', 'getCantones']);
+Route::get('/api/cantones/{codigo}',['\App\Http\Controllers\ProfileController', 'getCantonesParametro']);
+Route::post('/api/insertDireccion',['\App\Http\Controllers\ProfileController', 'insertDireccion']);
+Route::get('/api/direccion/{usuario}',['\App\Http\Controllers\ProfileController', 'getDireccion']);
+Route::get('/api/datospersona/{usuario}',['\App\Http\Controllers\ProfileController', 'getdatospersona']);
+Route::put('/api/updatePerson/{id}',['\App\Http\Controllers\ProfileController', 'updatePerson']);
