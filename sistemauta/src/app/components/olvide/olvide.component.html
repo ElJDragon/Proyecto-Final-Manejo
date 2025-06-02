@@ -1,0 +1,62 @@
+<br><br><br>
+<div class="login-wrap">
+
+
+
+
+	<div class="login-html">
+
+	<div  *ngIf="status == 'success'">
+<a style="color:#ffc451">Se envió código correctamente</a>
+</div>
+	<div  *ngIf="status == 'noexiste'">
+<a style="color:#ffc451">Email no registrado</a>
+</div>
+<div  *ngIf="status == 'error'">
+	<a style="color:#ffc451">Correo no Existe</a>
+</div>
+
+
+
+
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" style="color:#fff">Recuperar Contraseña</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="color:#fff"></label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+
+				<form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+				<div class="group">
+					<label for="mailp" class="label" style="color:">Email</label>
+					<input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="DESTINO" #DESTINO="ngModel" [(ngModel)]="mailp.DESTINO" class="form-control form-control-mailp"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                  class="input">
+                                                  <small *ngIf="!DESTINO.valid && DESTINO.touched" class="invalid-feedback d-block ">
+                                                El correo no es válido
+                                                </small>
+				</div>
+
+				<div class="group" align="center">
+					<!--<input type="submit" class="button" value="Sign In">-->
+					
+					<input type="submit" value="Enviar Código" 
+class="get-started-btn scrollto" style="color:#000">
+
+				</div>
+
+</form>
+
+
+				<div class="hr"></div>
+
+			</div>
+
+		</div>
+							<div class="foot-lnk">
+					<a [routerLink]="['/login']" style="color:#fff">Inciar Sesion</a>
+				</div>
+	</div>
+
+</div>
+
+<br><br>
+
