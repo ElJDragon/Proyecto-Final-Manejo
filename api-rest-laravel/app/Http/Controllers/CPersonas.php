@@ -109,14 +109,20 @@ public function nuevaPersona(Request $request){
      
         //Validar los datos
         $validate = \Validator::make($params_array, [
-        'ID'=>'required'//Comprobar si el usuario existe con unique
-        
+    'NOMBRES' => 'required',
+    'APELLIDOS' => 'required',
+    'EMAIL' => 'required|email',
+    'TELEFONO' => 'required',
+    'USUARIO' => 'required',
+'IDENTIFICACION' => 'required|unique:TPERSONAS,IDENTIFICACION'
+
     ]);
     if($validate->fails()){
            $data = array(
           'status'=>'error',
           'code'=>404, 
-          'message'=>'Variable nombre es requerido',
+          'message'=>'Variable nombre,email,telefono,
+          usuario,identificacion requeridos',
           'error'=>$validate->errors()
         );
     }else
@@ -124,32 +130,31 @@ public function nuevaPersona(Request $request){
              
         //Crear Tipospersonas
     $personas = new Personas();
-    $personas->ID = $params_array['ID'];
-    $personas->NOMBRES = strtoupper($params_array['NOMBRES']);
-    $personas->APELLIDO = strtoupper($params_array['APELLIDO']);
+    $personas->NOMBRES = ($params_array['NOMBRES']);
+    $personas->APELLIDOS = ($params_array['APELLIDOS']);
     $personas->EMAIL = $params_array['EMAIL'];
     $personas->TELEFONO = $params_array['TELEFONO'];
     $personas->USUARIO = $params_array['USUARIO'];
     $personas->IDENTIFICACION = $params_array['IDENTIFICACION'];
     
 //Guardar el evento
-  $personas->save();
-    
-  //enviar la respuesta
-          $data = array(
-          'status'=>'succes',
-          'code'=>200, 
-          'message'=>'La Persona se ha creado correctamente'
-        );
-    }
-        }else
-        {
-           $data = array(
-          'status'=>'error',
-          'code'=>404, 
-          'message'=>'Los datos enviados no son correctos'
-        );  
-        }
+ try {
+    $personas->save();
+
+    $data = [
+        'status' => 'success',
+        'code' => 200,
+        'message' => 'La Persona se ha creado correctamente'
+    ];
+} catch (\Exception $e) {
+    $data = [
+        'status' => 'error',
+        'code' => 500,
+        'message' => 'Error al guardar',
+        'error' => $e->getMessage()
+    ];
+}}}
+
 
         return response()->json($data,$data['code']);
     }

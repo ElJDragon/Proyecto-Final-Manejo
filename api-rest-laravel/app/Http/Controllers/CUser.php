@@ -111,7 +111,7 @@ public function nuevoUser(Request $request){
            $data = array(
           'status'=>'error',
           'code'=>404, 
-          'message'=>'Variable nombre es requerido',
+          'message'=>'Variable nombre, Email y Password requeridos',
           'error'=>$validate->errors()
         );
     }else

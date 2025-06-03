@@ -12,7 +12,7 @@ protected $table='TPERSONAS';
     protected $fillable = [
         'ID',
         'NOMBRES',
-        'APELLIDO',
+        'APELLIDOS',
         'EMAIL',
         'TELEFONO',
         'USUARIO',
@@ -20,7 +20,7 @@ protected $table='TPERSONAS';
     ];
 protected $primaryKey ='ID';
  public $keyType = 'string';
-   public $incrementing = false; 
+   public $incrementing = true; 
    public $timestamps = false;
 
 
