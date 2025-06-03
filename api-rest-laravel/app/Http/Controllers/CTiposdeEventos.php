@@ -46,13 +46,14 @@ $data = array(
 
                             }
 
+
 //Funcion con sql con condicion
-public function eventosParametros($parametro){
+public function eventosParametros($codigo_evento){
         $variable =0;
         //$eventos= TIPOSEVENTOS::orderBy('CODIGO_EVENTO')->get();
         $eventos = TIPOSEVENTOS::where(
                      [ 
-                         ['CODIGO_EVENTO',$parametro]
+                         ['CODIGO_EVENTO',$codigo_evento]
                      ])->get();
  foreach($eventos as $evento)
                 {
