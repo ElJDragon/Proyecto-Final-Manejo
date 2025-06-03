@@ -27,3 +27,5 @@ Route::get('/api/getEventosParametro/{parametro}',['\App\Http\Controllers\CTipos
 Route::post('/api/nuevoEvento',['\App\Http\Controllers\CTiposdeEventos', 'nuevoEvento']);
 Route::delete('/api/eliminarEvento/{parametro}',['\App\Http\Controllers\CTiposdeEventos', 'eliminarEventos']);
 Route::put('/api/updateEventos/{parametro}',['\App\Http\Controllers\CTiposdeEventos', 'updateEventos']);
+//Rutas que direcionan a la tabla Personas
+Route::get('/api/getPersonas',['\App\Http\Controllers\CPersonas', 'consultarPersonas']);
