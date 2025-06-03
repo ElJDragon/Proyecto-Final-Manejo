@@ -29,3 +29,13 @@ Route::delete('/api/eliminarEvento/{parametro}',['\App\Http\Controllers\CTiposde
 Route::put('/api/updateEventos/{parametro}',['\App\Http\Controllers\CTiposdeEventos', 'updateEventos']);
 //Rutas que direcionan a la tabla Personas
 Route::get('/api/getPersonas',['\App\Http\Controllers\CPersonas', 'consultarPersonas']);
+Route::get('/api/getPersonasParametros/{parametro}',['\App\Http\Controllers\CPersonas', 'personasParametros']);
+Route::post('/api/nuevaPersona',['\App\Http\Controllers\CPersonas', 'nuevaPersona']);
+Route::delete('/api/eliminarEvento/{parametro}',['\App\Http\Controllers\CPersonas', 'eliminarEventos']);
+Route::put('/api/updateEventos/{parametro}',['\App\Http\Controllers\CPersonas', 'updateEventos']);
+
+//Rutas que direcionan a la tabla USUARIOS
+Route::get('/api/getUsuarios',['\App\Http\Controllers\CUser', 'consultarUsers']);
+Route::get('/api/getUsersParametros/{parametro}',['\App\Http\Controllers\CUser', 'usersParametros']);
+Route::post('/api/nuevoUser',['\App\Http\Controllers\CUser', 'nuevoUser']);
+
