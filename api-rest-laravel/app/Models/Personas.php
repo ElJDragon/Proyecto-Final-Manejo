@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Personas extends Model
 {
     //Nombre de la tabla de la base de datos
-protected $table='TPERSONA';
+protected $table='TPERSONAS';
     protected $fillable = [
         'ID',
         'NOMBRES',

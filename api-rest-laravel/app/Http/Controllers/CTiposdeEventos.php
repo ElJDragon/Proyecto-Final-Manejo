@@ -46,13 +46,14 @@ $data = array(
 
                             }
 
+
 //Funcion con sql con condicion
-public function eventosParametros($parametro){
+public function eventosParametros($codigo_evento){
         $variable =0;
         //$eventos= TIPOSEVENTOS::orderBy('CODIGO_EVENTO')->get();
         $eventos = TIPOSEVENTOS::where(
                      [ 
-                         ['CODIGO_EVENTO',$parametro]
+                         ['CODIGO_EVENTO',$codigo_evento]
                      ])->get();
  foreach($eventos as $evento)
                 {
@@ -82,6 +83,47 @@ $data = array(
          return response()->json($data,$data['code']);
 
                             }
+
+
+//Funcion con sql con condicion
+public function eventosLike($codigo_evento){
+        $variable =0;
+        //$eventos= TIPOSEVENTOS::orderBy('CODIGO_EVENTO')->get();
+        $eventos = TIPOSEVENTOS::where(
+                     [ 
+                         ['NOMBRE','like','%'.$codigo_evento.'%']
+                     ])->get();
+ foreach($eventos as $evento)
+                {
+         $tipos[$variable] = array(     
+             'CODIGO_EVENTO'=>trim($evento->CODIGO_EVENTO),
+              'NOMBRE'=>trim($evento->NOMBRE),
+              'DETALLE'=>trim($evento->DETALLE)
+              );
+
+         $variable++;
+                }
+if($variable>0)
+{
+$data = array(
+          'status'=>'OK',
+          'code'=>200, 
+          'tipos'=>$tipos);
+}else
+{
+$data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'No existen registros');
+         }
+
+
+         return response()->json($data,$data['code']);
+
+                            }
+
+
+
 //Funcion con sql PAReA INSERTAR
 public function nuevoEvento(Request $request){
         $json = $request->input('json',null);
