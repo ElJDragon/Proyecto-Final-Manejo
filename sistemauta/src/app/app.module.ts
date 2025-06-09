@@ -27,6 +27,13 @@ import { CarrerasComponent } from './components/carreras/carreras.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CrearcarreraComponent } from './components/crearcarrera/crearcarrera.component';
 import { CreareventosComponent } from './components/creareventos/creareventos.component';
+import { ComponetepruebaComponent } from './components/componeteprueba/componeteprueba.component';
+import { CrearcursoComponent } from './components/crearcurso/crearcurso.component';
+import { CursosadminComponent } from './components/cursosadmin/cursosadmin.component';
+import { ActivosComponent } from './components/activos/activos.component';
+import { SeguimientoComponent } from './components/seguimiento/seguimiento.component';
+import { RegistradosComponent } from './components/registrados/registrados.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 
 @NgModule({
@@ -43,7 +50,14 @@ import { CreareventosComponent } from './components/creareventos/creareventos.co
     CarrerasComponent,
     ProfileComponent,
     CrearcarreraComponent,
-    CreareventosComponent
+    CreareventosComponent,
+    ComponetepruebaComponent,
+    CrearcursoComponent,
+    CursosadminComponent,
+    ActivosComponent,
+    SeguimientoComponent,
+    RegistradosComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,

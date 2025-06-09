@@ -1,0 +1,171 @@
+
+  <section id="contact" class="contact">
+      <div class="container" >
+
+<style >
+  
+  .texto-borde {
+  color: #ffc451;
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 20px 25px;
+font-size:30px;
+   font-family: Verdana;
+  font-family: 'PT Sans';
+}
+.textarea-expansible {
+    padding: 0px;
+    width: 300px;
+    height: 50px;
+    transition: height 0.3s ease;
+}
+
+.dropdown-menu {
+border-color:#ffc451;
+display: none;
+}
+
+
+
+/* Estilo cuando está enfocado (al hacer clic) */
+.textarea-expansible:focus {
+    height: 150px; /* Altura deseada al expandirse */
+}
+
+.texto-borde {
+  color: #000;
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 20px 25px;
+font-size:30px;
+border-color: #fff;
+border-width: 2px;
+   font-family: Verdana;
+  font-family: 'PT Sans';
+}
+
+
+
+      .tablaed {
+ height: 300px;
+ 
+ overflow-y: auto;
+ 
+  border-collapse: collapse;
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+
+.textarea-expansible {
+    padding: 0px;
+    width: 200px;
+    height: 25px;
+    transition: height 0.3s ease;
+}
+
+/* Estilo cuando está enfocado (al hacer clic) */
+.textarea-expansible:focus {
+    height: 150px; /* Altura deseada al expandirse */
+}
+</style>
+  <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+<br><br><br>
+ <img src="/assets/img/registro.png" class="img-fluid" alt="">
+
+            </div>
+
+
+
+
+
+
+
+          </div>
+
+          <div  class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+              
+    <div align="center">
+              <span class="texto-borde ">Reportes Sistema de Eventos</span>
+              </div>
+             <hr>
+             <br>
+
+<table>
+  <tr>
+    <td>
+          <div class="col-md-6 form-group">
+                 <i class="bi bi-clock"></i>
+                  <p>Parámetro fecha inicio</p>
+                    <input onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;" maxlength="2" style="background-color:#E2F4F5; width:200px;"  class="form-control" id="verde" value="{{this.fechaexponer}}" required>
+                </div>  
+  </td>
+  <td>
+             <div class="col-md-6 form-group">
+                 <i class="bi bi-clock"></i>
+                  <p>Parámetro fechafin</p>
+                    <input onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;" maxlength="2" style="background-color:#E2F4F5; width:200px;"  class="form-control" id="verde" value="{{this.fechaexponer}}" required>
+                </div>
+  </td>
+  </tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+                    <div >
+
+<table>
+  <tr>
+    <td>
+<a  class="btn-redondeado">Reporte Consolidado</a>
+    </td>
+    <td>
+<a class="btn-redondeado">Tipos Eventos</a>
+    </td>
+  </tr>
+  <br>
+  <tr>
+    <td>
+<a class="btn-redondeado">Carreras</a>
+    </td>
+        <td>
+<a class="btn-redondeado">Eventoss</a>
+    </td>
+  </tr>
+
+</table>
+
+
+                </div>
+     
+
+
+
+              
+            </form>
+
+          </div>
+
+        </div>
+
+<br><br><br><br>
+<br><br>
+              </div>
+    </section><!-- End Contact Section -->
+
+
+
+
+

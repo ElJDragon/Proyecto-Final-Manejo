@@ -16,7 +16,13 @@ import { CrearcarreraComponent } from './components/crearcarrera/crearcarrera.co
 import { CreareventosComponent } from './components/creareventos/creareventos.component';
 import { PersonaComponent } from './components/persona/persona.component';
 import { ErrorComponent } from './components/error/error.component';
-
+import { ComponetepruebaComponent } from './components/componeteprueba/componeteprueba.component';
+import { CrearcursoComponent } from './components/crearcurso/crearcurso.component';
+import { CursosadminComponent } from './components/cursosadmin/cursosadmin.component';
+import { ActivosComponent } from './components/activos/activos.component';
+import { SeguimientoComponent } from './components/seguimiento/seguimiento.component';
+import { RegistradosComponent } from './components/registrados/registrados.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 
 
@@ -34,7 +40,14 @@ const appRoutes: Routes =[
 {path: 'creaeventos', component: CreareventosComponent , canActivate: [AdminGuard] },
 {path: 'persona', component: PersonaComponent, canActivate: [AdminGuard]},
 {path: 'usuarios', component: UsuariosComponent, canActivate: [AdminGuard]},
+{path: 'creacurso', component: CrearcursoComponent, canActivate: [AdminGuard]},
+{path: 'administracion', component: CursosadminComponent, canActivate: [AdminGuard]},
+{path: 'eventos', component: ActivosComponent},
+{path: 'seguimiento', component: SeguimientoComponent, canActivate: [AdminGuard]},
+{path: 'registrados/:parametro', component: RegistradosComponent, canActivate: [AdminGuard]},
+{path: 'reporte', component: ReporteComponent, canActivate: [AdminGuard]},
 {path: 'cambiopwd', component: CambiopwdComponent},
+{path: 'nuevatransaccion', component: ComponetepruebaComponent},
 //esta ruta siempre debe estar al final
 {path: '**', component: ErrorComponent}
 	];
