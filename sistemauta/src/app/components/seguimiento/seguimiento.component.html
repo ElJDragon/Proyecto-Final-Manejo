@@ -1,0 +1,200 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+
+  <div class="d-flex justify-content-center">
+    <section class="pt-5 pb-9 w-100" style="max-width: 1200px;">
+
+
+
+
+<form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+
+
+  <div class="row mt-5">
+
+
+<div class="row">
+
+
+
+          <div  class="col-xs-6 text-center">
+
+            <form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+              
+<span class="texto-borde">Seguimiento de Eventos</span>
+             <hr>
+             <br>
+<div class="row d-flex justify-content-center">
+
+
+
+
+<table class="table table-bordered">
+  <thead class="col-lg-4">
+    <tr  align="center" >
+      <th class="col-0" ><span class="fw-bold text-secondary"><i class="fa fa-book fa-2x me-3"></i></span>
+</th> 
+      <th class="col-1">
+
+      </th>
+      <th class="col-1">
+        <input   (keyup)="getVehiculosParametros()" style="text-transform:uppercase; border-color:#D81324; width: 150px; height:30px;" type="text" name="nombres" class="form-control"  id="pnombres" placeholder="Nombre">
+      </th>
+<th class="col-0"></th>
+<th class="col-0"></th>
+<th class="col-0"></th>
+<th class="col-3"></th>
+      <th class="col-1"><a *ngIf="isbusqueda" style="color:#000" (click)="ngOnInit()" class="get-started-btn scrollto"><img width="20" height="20" src="/assets/img/limpiar.png">   Limpiar</a></th>
+    </tr>
+    <tr align="center">
+      <th class="col-1">Codigo</th>
+      <th class="col-1">Tipo Evento</th>
+      <th class="col-1">Nombre</th>
+      <th class="col-0">Carrera</th>
+      <th class="col-0">Publico</th>
+      <th class="col-3">Pagago</th>
+      <th class="col-1">Costo</th>
+      <th class="col-1">Horas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eventos of paginacion" >
+    
+
+<th  style="font-size: 100%;" class="col-1">{{eventos.SECUENCIALCURSO}}</th>
+
+
+
+      <td  class="col-2" style="font-size:80%">{{eventos.NOMBREEVENTO}}</td>
+      <td  class="col-2" style="font-size:80%">{{eventos.NOMBRECURSO}}</td>
+      <td  class="col-2" style="font-size:80%">{{eventos.NOMBRECARRERA}}</td>
+
+    <td  class="col-2" style="font-size:80%">{{eventos.ESPUBLICO}}</td>
+    <td  class="col-2" style="font-size:80%">{{eventos.ESPAGADO}}</td>
+
+
+    <td  class="col-2" style="font-size:80%">{{eventos.VALOR}}</td>
+    <td  class="col-2" style="font-size:80%">{{eventos.HORAS}}</td>
+
+
+
+
+      <th class="col-1">
+
+
+<a   title="Detalles" routerLink="/registrados/{{eventos.SECUENCIALCURSO}}" class="get-started-btn scrollto" style="padding: 0px 8px 2px 5px;"><img   width="25" height="25" src="/assets/img/asignar.png" ></a>
+
+
+
+
+
+    
+        </th>
+
+</tr>
+  </tbody>
+
+</table>
+
+<div *ngIf="solo1">
+<br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo2">
+<br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo3">
+<br><br><br><br><br>
+</div>
+<div *ngIf="solo4">
+<br><br><br>
+</div>
+
+<div *ngIf="solo5">
+<br><br>
+</div>
+
+<table>
+
+
+
+<th *ngIf="ispaginacion"  >
+    <nav aria-label="Page navigation example" >
+
+  <ul class="pagination" >
+    
+    <li *ngIf="atras" class="page-item"  ><a class="page-link" (click)="Paginacion(0)">        
+      <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    <li *ngIf="!atras" class="page-item disabled"><a class="page-link">        <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    
+    <li *ngIf="uno" class="page-item active"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+    <li *ngIf="!uno" class="page-item"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+
+    <li *ngIf="dos && dosd" class="page-item active" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dos && dosd" class="page-item" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dosd" class="page-item disabled" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+
+
+    <li *ngIf="tres && tresd" class="page-item active"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tres && tresd" class="page-item"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tresd" class="page-item disabled"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    
+
+      <li *ngIf="delante" class="page-item"><a class="page-link" (click)="Paginacion(4)">
+        <img width="20" height="20" src="/assets/img/siguiente.png">
+      </a>
+      <li *ngIf="!delante" style="color:#E4A42B" class="page-item disabled"><a class="page-link"><img width="20" height="20" src="/assets/img/siguiente.png"></a>
+    </li>
+
+
+  </ul>
+
+</nav>
+</th>
+
+
+<tr>
+<th>
+  <div style="padding: 6px 10px 7px 10px;" class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success' && istemporal">
+El vehículo se ha ingresado correctamente
+</div>
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error' && istemporal">
+Error al ingresar vehículo
+</div>   
+  <div style="padding: 6px 10px 7px 10px;" class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success1' && istemporal">
+El registro se ha actualizado correctamente
+</div>
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error1' && istemporal">
+Error al actualizar registro
+</div> 
+<div style="padding: 6px 10px 7px 10px;" class="alert alert-danger col-md-5 mt-3" *ngIf="errorvacio">
+Existen campos vacíos
+</div>
+
+</th></tr>
+</table>
+</div>
+
+
+            </form>
+
+          </div>
+</div>
+        </div>
+
+
+
+</form>
+
+    </section><!-- End Contact Section -->
+  </div>
+</body>
+</html>
+
+
+

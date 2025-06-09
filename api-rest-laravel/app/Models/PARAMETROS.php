@@ -15,7 +15,8 @@ protected $table='TPARAMETROSCURSO';
         'ESPUBLICO',
         'ESPAGADO',
         'VALOR',
-        'HORAS'
+        'HORAS',
+        'CALIFICACION'
 
     ];
 protected $primaryKey ='CODIGO';

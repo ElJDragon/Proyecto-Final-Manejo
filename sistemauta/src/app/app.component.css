@@ -1,0 +1,103 @@
+
+
+@keyframes clouds {
+  from { background-position: 0 0; }
+  to { background-position: 200% 0; }
+}
+
+
+#coche {
+  margin: 0% auto -50px;
+  position: relative;
+  z-index: 1;
+  left: 100px;
+  bottom: 0px;
+  width: 150px;
+  -webkit-animation: car 15s infinite;
+          animation: car 15s infinite;
+}
+
+/*Animacion para el coche en funcionamiento*/
+@-webkit-keyframes car {
+ 50% { -webkit-transform: translateX(50%); }
+ 70% { -webkit-transform: translateX(-50%); }
+ 100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes car {
+ 50% { transform: translateX(50%); }
+ 70% { transform: translateX(-50%); }
+ 100% { transform: translateX(0%); }
+}
+
+#coche img {
+  width: 100%;
+  -webkit-animation: suspension 1s infinite;
+          animation: suspension 1s infinite;
+}
+
+/*Animacion para crear la suspension del coche*/
+@-webkit-keyframes suspension {
+  0% { -webkit-transform: translateY(1px); }
+  50% { -webkit-transform: translateY(3px); }
+  100% { -webkit-transform: translateY(1px); }
+}
+
+@keyframes suspension {
+  0% { transform: translateY(1px); }
+  50% { transform: translateY(3px); }
+  100% { transform: translateY(1px); }
+}
+
+#rueda1 {
+  background: url("/assets/img/llanta.png") no-repeat center center;
+  background-size: 99% auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 12px; /* Ajusta este valor para mover más a la izquierda */
+  bottom: 22px;
+  z-index: 2;
+  -webkit-animation: giro 1s linear infinite;
+          animation: giro 1s linear infinite;
+}
+
+
+#rueda2 {
+  background: url("/assets/img/llanta.png") no-repeat center center;
+  background-size: 99% auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 103px; /* Ajusta este valor para mover más a la izquierda */
+  bottom: 52px;
+  z-index: 2;
+  -webkit-animation: giro 1s linear infinite;
+          animation: giro 1s linear infinite;
+}
+
+
+
+  /*Animacion para el grio de las ruedas*/
+  @-webkit-keyframes giro {
+   from { -webkit-transform: rotate(0deg); }
+   to { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes giro {
+   from { -webkit-transform: rotate(0deg); }
+   to { -webkit-transform: rotate(360deg); }
+  }
+
+
+
+@keyframes road {
+  from { background-position: 0 0; }
+  to { background-position: 200% 0; }
+}
+
+
+
+

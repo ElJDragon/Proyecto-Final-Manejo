@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+}
+.preview-container {
+  margin-top: 20px;
+}
+.preview-container img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Muestra la imagen */
+}
+input[type="file"] {
+  margin-top: 20px;
+}
+.square-image {
+  width: 150px; /* O el tamaño que desees para el cuadrado */
+  height: 150px; /* Mismo tamaño para mantener la forma cuadrada */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin deformarse */
+  border: 1px solid #ccc; /* Opcional: para agregar un borde alrededor de la imagen */
+}
+.red-label {
+  color: red;
+}
+.labelcrea {
+  color: #D81324; 
+  font-family: 'Trocchi', serif; 
+  font-size: 25px; 
+  font-weight: normal; 
+  line-height: 48px; 
+  margin: 0;
+  text-align: center;
+}

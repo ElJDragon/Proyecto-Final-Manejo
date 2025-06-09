@@ -1,0 +1,85 @@
+<br><br><br>
+<div class="login-wrap">
+
+
+
+
+	<div class="login-html">
+
+	<div  *ngIf="status == 'success'">
+<a style="color:#ffc451">Cambio de Contraseña ok</a>
+</div>
+	<div  *ngIf="status == 'error'">
+<a style="color:#ffc451">El usuario no esta identificado</a>
+</div>
+<div  *ngIf="status == 'camposrequeridos'">
+	<a style="color:#ffc451">Campos requeridos no Ingresados</a>
+</div>
+<div  *ngIf="status == 'erroremail'">
+	<a style="color:#ffc451">Contraseña Actual no es la correcta</a>
+
+</div>
+
+
+
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" style="color:#fff">Cambio de Contraseña</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="color:#fff"></label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+
+				<form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+				<div class="group">
+					<label for="pass" class="label">Contraseña Actual</label>
+					
+					<input name="Password" type="password" class="form-control form-control-pwd "
+                                                id= "exampleInputPassword"  #Password="ngModel" [(ngModel)]="pwd.Password" required  class="input" data-type="password">
+				</div>
+
+				<div class="group">
+					<label for="pass1" class="label">Contraseña Nueva</label>
+					
+					<input pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="Password1" type="password" class="form-control form-control-user "
+                                                id= "exampleInputPassword1"  #Password1="ngModel" [(ngModel)]="pwd.Password1" required  class="input" data-type="password">
+
+                                                  <small *ngIf="!Password1.valid && Password1.touched" class="invalid-feedback d-block ">
+                                                La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra mayúscula.
+                                                </small>
+				</div>
+				<div class="group">
+					<label for="pass2" class="label">Confirmar Contraseña</label>
+					<input pattern="^(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="Password2" #Password2="ngModel" [(ngModel)]="pwd.Password2" id="exampleInputPassword2" type="password" class="input" data-type="password">
+				
+				<strong><small *ngIf="!isigual" class="invalid-feedback d-block ">La contraseña no Coiciden</small></strong>
+
+<small *ngIf="!Password2.valid && Password2.touched" class="invalid-feedback d-block ">
+                                                La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra mayúscula.
+                                                </small>
+
+
+				</div>
+
+
+				<div class="group" align="center">
+					<!--<input type="submit" class="button" value="Sign In">-->
+					
+					<input type="submit" value="Cambiar Contraseña" 
+class="get-started-btn scrollto" style="color:#000">
+
+				</div>
+
+</form>
+
+
+				<div class="hr"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<br><br>
+

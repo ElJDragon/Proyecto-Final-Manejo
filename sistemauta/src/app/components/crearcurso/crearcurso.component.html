@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" data-navigation-type="default" data-navbar-horizontal-shape="default">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Phoenix</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="../../assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="../../assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="/assets/vendors/simplebar/simplebar.min.js"></script>
+    <script src="/assets/js/config.js"></script>
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="/assets/vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
+    <link href="/assets/vendors/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/assets/vendors/prism/prism-okaidia.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="/assets/vendors/simplebar/simplebar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+    <link href="/assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+    <link href="/assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="/assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+    <script>
+      var phoenixIsRTL = window.config.config.phoenixIsRTL;
+      if (phoenixIsRTL) {
+        var linkDefault = document.getElementById('style-default');
+        var userLinkDefault = document.getElementById('user-style-default');
+        linkDefault.setAttribute('disabled', true);
+        userLinkDefault.setAttribute('disabled', true);
+        document.querySelector('html').setAttribute('dir', 'rtl');
+      } else {
+        var linkRTL = document.getElementById('style-rtl');
+        var userLinkRTL = document.getElementById('user-style-rtl');
+        linkRTL.setAttribute('disabled', true);
+        userLinkRTL.setAttribute('disabled', true);
+      }
+    </script>
+
+ <script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const previewImage = document.getElementById('previewImage');
+
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          previewImage.src = e.target.result;
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+
+
+
+<div class="d-flex justify-content-center">
+    <section class="pt-5 pb-9 w-100" style="max-width: 800px;">
+
+      <div class="content">
+
+
+        <div class="row mb-9 g-4 mt-4">
+          <div class="col-12 col-xxl-6">
+            <div class="card shadow-none border" data-component-card="data-component-card">
+              <div class="card-header p-4 border-bottom bg-body">
+                <div class="row g-3 justify-content-between align-items-center">
+                  <div class="col-12 col-md">
+                   <h2 class="labelcrea">
+Creación de un Nuevo Evento
+</h2>
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="p-4 code-to-copy">
+                  <div class="card theme-wizard mb-5" data-theme-wizard="data-theme-wizard">
+                    
+
+
+
+                    <div class="card-body pt-4 pb-0">
+                      <div class="tab-content">
+                     
+
+<!--MOSTRAR EL PRIMER FORMULARIOS-->
+<div *ngIf="mostraruno" class="tab-pane active" role="tabpanel" aria-labelledby="bootstrap-wizard-tab1" id="bootstrap-wizard-tab1">
+                           <form class="needs-validation" id="wizardValidationForm1" novalidate="novalidate" data-wizard-form="1">
+
+ <div class="mb-2">
+                              <label class="form-label" for="bootstrap-wizard-gender">Tipo de Evento</label>
+                              <select (change)="codigoEvento($event)" required="required" class="form-select" name="gender" id="bootstrap-wizard-validation-wizard-name">
+                                <option value="">Selecciona una Carrera...</option>
+
+                                <option *ngFor="let eventos of eventosp" [value]="eventos.CODIGO_EVENTO">{{eventos.NOMBRE}}</option>
+                              </select>
+                              <div class="invalid-feedback">Por favor selecciona una carrera</div>
+                            </div>
+
+                            <div class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Nombre del Evento</label>
+                              <input #nombrecurso class="form-control" type="text" name="name" placeholder="Educación Financiera" required="required" id="bootstrap-wizard-validation-wizard-name" />
+                              <div class="invalid-feedback">Por favor ingresa un nombre</div>
+                            </div>
+
+ <div class="mb-2">
+                              <label class="form-label" for="bootstrap-wizard-gender">Quien Organiza</label>
+                              <select (change)="codigoCarrera($event)" required="required" class="form-select" name="gender" id="bootstrap-wizard-validation-wizard-name">
+                                <option value="">Selecciona una Carrera...</option>
+
+                                <option *ngFor="let option of carrerasp" [value]="option.CODIGOCARRERA">{{option.NOMBRE}}</option>
+                              </select>
+                              <div class="invalid-feedback">Por favor selecciona una carrera</div>
+                            </div>
+
+
+<label class="form-label text-body" for="bootstrap-wizard-wizard-name">Portada del Evento</label>
+<div class="row g-4 mb-4">
+    <div class="col-md-auto">
+        <div class="dz-preview dz-preview-single">
+            <div class="dz-preview-cover d-flex align-items-center justify-content-center mb-2 mb-md-0">
+                <div class="avatar avatar-4xl">
+                    <img class="square-image" *ngIf="imageSrc; else defaultImage"
+                         [src]="imageSrc"
+                         (error)="onError($event)"
+                         alt="Image Preview"/>
+                    <ng-template #defaultImage>
+                        <img class="square-image" src="/assets/img/team/avatar.webp" alt="Default Image"/>
+                    </ng-template>
+                </div>
+                <div class="dz-progress">
+                    <span class="dz-upload" data-dz-uploadprogress=""></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="dz-message dropzone-area px-2 py-3" data-dz-message="data-dz-message">
+            <div class="text-center text-body-emphasis" (click)="triggerFileInput()">
+                <h5 class="mb-2">
+                    <span class="fa-solid fa-upload me-2"></span>
+                    Subir Portada del Curso
+                </h5>
+                <p class="mb-0 fs-9 text-body-tertiary text-opacity-85 lh-sm">
+                    Formato de la imagen debe ser JPG <br />con un tamaños máximo de 5MB
+                </p>
+                <input #fileInput class="d-none" type="file" (change)="onFileChange($event)" accept="image/*"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                          </form>
+<div class="flex-1 text-end" >
+
+                             <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
+
+                          <button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+
+
+
+                          <button   style="display:none"  class="btn btn-primary px-6 px-sm-6" type="submit" data-wizard-next-btn="data-wizard-next-btn">ccccc<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+                        </div>
+                        </div>
+
+
+
+
+<!--PASO DOS--------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------ -->
+
+
+
+<!--MOSTRAR EL PRIMER FORMULARIOS-->
+<div *ngIf="mostrardos" class="tab-pane active" role="tabpanel" aria-labelledby="bootstrap-wizard-tab1" id="bootstrap-wizard-tab1">
+                           <form class="needs-validation" id="wizardValidationForm1" novalidate="novalidate" data-wizard-form="1">
+
+ <div class="mb-2">
+                              <label class="form-label" for="bootstrap-wizard-gender">El evento es Pagado</label>
+                              <select (change)="EventoPagado($event)" required="required" class="form-select" name="gender" id="pagado">
+                                <option value="">Selecciona un opcion...</option>
+                                <option value="1">1 SI</option>
+                                <option value="0">2 NO</option>
+                              </select>
+                              <div class="invalid-feedback">Por favor selecciona un opcion</div>
+                            </div>
+
+
+                            <div class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Costo del Evento</label>
+
+
+                              <input #valor class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="valor" value="0"/>
+                              <div class="invalid-feedback">Por favor ingresa una Valor</div>
+                            </div>
+
+
+
+ <div class="mb-2">
+                              <label class="form-label" for="bootstrap-wizard-gender">El evento es Público</label>
+                              <select (change)="EventoPublico($event)" required="required" class="form-select" name="gender" id="publico">
+                                <option value="">Selecciona un opcion...</option>
+                                <option value="1">1 SI</option>
+                                <option value="0">2 NO</option>
+                              </select>
+                              <div class="invalid-feedback">Por favor selecciona un opcion</div>
+                            </div>
+
+
+                            <div class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Calificación</label>
+                              <input #calificacion class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="calificacion" />
+                              <div class="invalid-feedback">Por favor ingresa una calificación</div>
+                            </div>
+
+
+                            <div class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Total de Horas</label>
+                              <input #horas class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="horas" />
+                              <div class="invalid-feedback">Por favor el total de horas</div>
+                            </div>
+
+
+                          </form>
+
+
+<div class="flex-1 text-end" >
+
+                             <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
+
+                          <button  *ngIf="botoncurso" (click)="guardarParametros(valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+
+                        </div>
+
+
+                        </div>
+
+
+
+
+<!--PASO FIN--------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------ -->
+
+
+
+
+
+
+<div *ngIf="mostrartres">
+                              <div class="text-center text-sm-start"><img class="d-dark-none" src="../../assets/img/spot-illustrations/38.webp" alt="" width="220" />
+                                <br>
+<label *ngIf="fincurso"  class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Curso creado con éxito</label>
+                              </div>
+
+
+
+                            <div class="col-12 col-sm-auto">
+                              <div class="text-center text-sm-start">
+                                <h5 class="mb-3">Finalizar Creación!</h5>
+                                <p class="text-body-emphasis fs-9">Recuerde Habilitar el curso<br />en la opción de Mantenimiento</p><a class="btn btn-primary px-6" (click)="fincursos()">Finalizar</a>
+                              </div>
+                            </div>
+</div>
+
+                      </div>
+                    </div>
+                    <div class="card-footer border-top-0" data-wizard-footer="data-wizard-footer">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+  
+        </div>
+
+   
+      </div>
+
+</section>
+</div>
+  </main>
+
+ 
+  </body>
+
+</html>
