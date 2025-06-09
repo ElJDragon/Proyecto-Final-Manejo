@@ -81,25 +81,3 @@ Route::post('/api/insertDireccion',['\App\Http\Controllers\ProfileController', '
 Route::get('/api/direccion/{usuario}',['\App\Http\Controllers\ProfileController', 'getDireccion']);
 Route::get('/api/datospersona/{usuario}',['\App\Http\Controllers\ProfileController', 'getdatospersona']);
 Route::put('/api/updatePerson/{id}',['\App\Http\Controllers\ProfileController', 'updatePerson']);
-
-
-
-//CURSO
-
-Route::post('/api/nuevoCurso',['\App\Http\Controllers\CursosController', 'nuevoCurso']);
-Route::post('/api/nuevoParametro',['\App\Http\Controllers\CursosController', 'nuevoParametro']);
-Route::post('/api/nuevoRegistro',['\App\Http\Controllers\CursosController', 'nuevoRegistro']);
-Route::get('/api/cursosadmin',['\App\Http\Controllers\CursosController', 'getcursosadmin']);
-Route::get('/api/disponibles/{usuario}',['\App\Http\Controllers\CursosController', 'disponibles']);
-Route::get('/api/disponiblesp/{usuario}',['\App\Http\Controllers\CursosController', 'disponiblesp']);
-
-Route::get('/api/registrados/{curso}',['\App\Http\Controllers\CursosController', 'registrados']);
-
-Route::put('/api/updatecurso/{codigo}',['\App\Http\Controllers\CursosController', 'updatecurso']);
-
-
-//carga de archivos
-Route::post('/api/cursos/{id}', ['\App\Http\Controllers\FilesController', 'cursos'])->name('file.cursos');
-Route::post('/api/profile/{id}', ['\App\Http\Controllers\FilesController', 'profile'])->name('file.profile');
-Route::post('/api/bienvenida/{id}', ['\App\Http\Controllers\FilesController', 'bienvenida'])->name('file.bienvenida');
-
