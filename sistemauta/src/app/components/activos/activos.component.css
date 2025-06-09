@@ -1,0 +1,51 @@
+.btn-redondeado {
+  border-radius: 20px; /* Define el radio de los bordes */
+  padding: 10px 20px; /* Espacio interno del botón */
+  background-color: #D81324; /* Color de fondo */
+  color: #fff; /* Color del texto */
+border: 2px solid #007bff; 
+
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s; /* Agrega una transición suave al color de fondo */
+}
+
+.btn-succes {
+  border-radius: 20px; /* Define el radio de los bordes */
+  padding: 10px 20px; /* Espacio interno del botón */
+  background-color: #28a745; /* Color de fondo */
+  color: #fff; /* Color del texto */
+border: 2px solid #007bff; 
+
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s; /* Agrega una transición suave al color de fondo */
+}
+
+.btn-redondeado:hover {
+  background-color: #AB0909; /* Cambia el color de fondo al pasar el ratón */
+}
+
+.bordess {
+border: 2px solid #007bff; 
+}
+
+table {
+  width: 60%;
+  height: 30px;
+}
+table tr {
+  text-align: left;
+
+}
+table th {
+  text-align: center;
+}
+
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+table th {
+  color: #000;
+  background-color: #fff;
+}
+

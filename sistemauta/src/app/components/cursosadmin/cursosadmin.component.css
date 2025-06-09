@@ -1,0 +1,8 @@
+.bg-holder {
+  width: 100%;            /* Ancho completo del contenedor padre */
+  height: 200px;          /* Alto visible */
+  background-size: cover; /* Escala la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+}
+
