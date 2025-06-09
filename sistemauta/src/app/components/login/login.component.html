@@ -1,0 +1,128 @@
+
+<div class="login-wrap">
+
+
+
+
+	<div class="login-html">
+
+
+	<div  *ngIf="status == 'success'">
+<a style="color:#ffc451">Usuario creado correctamente</a>
+</div>
+<div  *ngIf="status == 'error'">
+	<a style="color:#ffc451">El usuario ya existe</a>
+</div>
+<div  *ngIf="status == 'camposrequeridos'">
+	<a style="color:#ffc451">Campos requeridos no Ingresados</a>
+</div>
+<div  *ngIf="status == 'errorinicio'">
+	<a style="color:#ffc451">Usuario y/o Contraseña Incorrectos</a>
+</div>
+<div  *ngIf="status == 'erroremail'">
+	<a style="color:#ffc451">Email aún no resgistrado en el sistema</a>
+
+</div>
+
+
+
+
+
+
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" style="color:#fff">LOGIN</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="color:#fff">REGISTRARSE</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+
+				<form  #loginForm="ngForm" (ngSubmit)="onSubmit2(loginForm)">
+				<div class="group">
+					<label for="user" class="label" style="color:">Email</label>
+					<input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                  class="input">
+                                                  <small *ngIf="!Email.valid && Email.touched" class="invalid-feedback d-block ">
+                                                El correo no es válido
+                                                </small>
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Contraseña</label>
+					<input name="Password" type="password" class="form-control form-control-user "
+                                                id= "exampleInputPassword"  #Password="ngModel" [(ngModel)]="user.Password" required class="input">
+
+                                                    <small *ngIf="!Password.valid && Password.touched" class="invalid-feedback d-block">
+        La contraseña no es válida
+    </small>
+
+
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Recuerdame</label>
+				</div>
+				<div class="group" align="center">
+					<!--<input type="submit" class="button" value="Sign In">-->
+					
+					<input  type="submit" value="Iniciar Sesion" 
+class="get-started-btn scrollto" style="color:#000">
+
+				</div>
+
+</form>
+
+
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a [routerLink]="['/olvide']" style="color:#fff">Olvide Contraseña?</a>
+				</div>
+			</div>
+			<div class="sign-up-htm">
+				<div class="group">
+					<label for="name" class="label">Nombres</label>
+					<input required pattern="[a-zA-Z]+" #name="ngModel" [(ngModel)]="user.Nombre" class="form-control form-control-user" style="text-transform:uppercase;" id="name" type="text" class="input">
+				</div>
+								<div class="group">
+					<label for="email" class="label">Email</label>
+
+					<input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control form-control-user"
+                                                id="exampleInputEmail" class="input">
+                                                <small *ngIf="!Email.valid && Email.touched" class="invalid-feedback d-block ">
+                                                El correo no es válido
+                                                </small>
+
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Contraseña</label>
+					
+					<input name="Password" type="password" class="form-control form-control-user "
+                                                id= "exampleInputPassword"  #Password="ngModel" [(ngModel)]="user.Password" required  class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Confirmar Contraseña</label>
+					<input name="Password2" #Password2="ngModel" [(ngModel)]="user.Password2" id="pass" type="password" class="input" data-type="password">
+				
+				<strong><small *ngIf="!isigual" class="invalid-feedback d-block ">La contraseña no Coiciden</small></strong>
+
+
+
+				</div>
+
+				<div class="group" align="center">
+					<!--<input type="submit" class="button" value="Registrarse">-->
+					
+
+
+       <form  #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">                               
+<input type="submit" value="Registrarse" 
+class="get-started-btn scrollto" style="color:#000">
+
+</form>
+
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<br><br>

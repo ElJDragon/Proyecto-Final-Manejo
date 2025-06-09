@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" data-navigation-type="default" data-navbar-horizontal-shape="default">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Profile</title>
+
+    <script>
+      var phoenixIsRTL = window.config.config.phoenixIsRTL;
+      if (phoenixIsRTL) {
+        var linkDefault = document.getElementById('style-default');
+        var userLinkDefault = document.getElementById('user-style-default');
+        linkDefault.setAttribute('disabled', true);
+        userLinkDefault.setAttribute('disabled', true);
+        document.querySelector('html').setAttribute('dir', 'rtl');
+      } else {
+        var linkRTL = document.getElementById('style-rtl');
+        var userLinkRTL = document.getElementById('user-style-rtl');
+        linkRTL.setAttribute('disabled', true);
+        userLinkRTL.setAttribute('disabled', true);
+      }
+    </script>
+  </head>
+
+
+  <body>
+
+
+<main class="main" id="top">
+  <div class="d-flex justify-content-center">
+    <section class="pt-5 pb-9 w-100" style="max-width: 1200px;">
+      <div class="container">
+
+
+ <div class="container-small">
+
+   
+          <div class="row g-3 mb-6">
+            <div class="col-12 col-lg-8">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="border-bottom border-dashed pb-4">
+                    <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
+                      <div class="col-12 col-sm-auto" type="button">
+                        
+                        <input class="d-none" id="avatarFile" type="file" (change)="onFileSelected($event)"/>
+
+  <label  for="avatarFile">
+<img class="rounded-circle"
+     [src]="urlStorage + Id + '.jpg'"
+     (error)="onError($event)"
+     alt=""
+     style="width: 80px; height: 80px; object-fit: cover;"/>
+
+
+       <button  *ngIf="subir" (click)="uploadFile()" style="background-color: #fa985c;" class="btn btn-phoenix-secondary">Subir Imagen</button>
+</label>
+
+
+
+                      </div>
+                      <div class="col-12 col-sm-auto flex-1">
+                        <h3>{{this.Nombre}}</h3>
+                        <p class="text-body-secondary">{{this.Email}}</p>
+                       <div><a class="me-2" href="https://es.linkedin.com/"><span class="fab fa-linkedin-in text-body-quaternary text-opacity-75 text-primary-hover"></span></a><a class="me-2" href="https://www.facebook.com/"><span class="fab fa-facebook text-body-quaternary text-opacity-75 text-primary-hover"></span></a><a href="https://x.com/"><span class="fab fa-twitter text-body-quaternary text-opacity-75 text-primary-hover"></span></a></div>
+
+                          <div  *ngIf="mensaje == 'true'">
+<a style="color:#3edf0b">Imagen cargada correctamente</a>
+</div>
+<div  *ngIf="mensaje == 'false'">
+  <a style="color:#dc3545">Error al cargar Imagen</a>
+</div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-between-center pt-4">
+                    <div>
+                      <h6 class="mb-2 text-body-secondary">Rol Asignado</h6>
+                      <h4 class="fs-7 text-body-highlight mb-0">{{this.Rol}}</h4>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="border-bottom border-dashed">
+                    <h4 class="mb-3">Dirección
+                      <button *ngIf="!editdireccion" (click)="editarDireccion()" class="btn btn-link p-0" type="button"> <span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Edit   </span>
+                      </button>
+
+                      <button *ngIf="editdireccion" (click)="cancelDireccion()" class="btn btn-link p-0" type="button"> <span class="fa-solid fa-cancel me-sm-2"></span><span class="d-none d-sm-inline">Cancel   </span></button>
+
+
+                    </h4>
+                  </div>
+                  
+
+                  <div class="pt-4 mb-7 mb-lg-4 mb-xl-7">
+
+<div class="row g-3">
+                      <div class="col-12">
+                        <div class="mb-4">
+
+<div *ngIf="editdireccion" >                
+<select class="form-select mb-3" aria-label="category" style="width: 200px;" (change)="onSelectProvincia($event)">
+  <option value="" disabled selected>Seleccione una provincia</option>
+  <option *ngFor="let provincia of listaprovincias" [value]="provincia.CODIGO">
+    {{provincia.NOMBRE}}
+  </option>
+</select>
+<select class="form-select mb-3" aria-label="category" style="width: 200px; display: inline-block;"  (change)="onSelectCanton($event)">
+  <option value="" disabled selected>Seleccione un canton</option>
+  <option *ngFor="let cantones of listacantones" [value]="cantones.CODIGO">
+    {{cantones.NOMBRE}}
+  </option>
+</select>
+<button *ngIf="isguardar" (click)="guardaDireccion()" class="btn btn-link p-0" type="button" style="display: inline-block;">
+<span class="fas fa-save fa-2x ms-3 text-body-quaternary"></span></button>
+</div>      
+
+
+<div  *ngIf="!editdireccion" >                
+<select  class="form-select mb-3" aria-label="category" style="width: 200px;">
+  <option *ngFor="let direccion of direccionactual">
+    {{direccion.PROVINCIA}}
+  </option>
+</select>
+<select class="form-select mb-3" aria-label="category" style="width: 200px;">
+  <option *ngFor="let direccion of direccionactual">
+    {{direccion.CANTON}}
+  </option>
+</select>
+</div> 
+
+
+  </div>
+                      </div>
+
+
+
+                      </div>
+
+                        
+      
+
+
+
+
+                  <h4 class="mb-3">Información Personal
+                      <button *ngIf="!editpersona" (click)="editarPersona()" class="btn btn-link p-0" type="button"> <span class="fa-solid fa-edit me-sm-2"></span><span class="d-none d-sm-inline">Edit   </span></button>
+
+                      <button *ngIf="editpersona" (click)="cancelPersona()" class="btn btn-link p-0" type="button"> <span class="fa-solid fa-cancel me-sm-2"></span><span class="d-none d-sm-inline">Cancel   </span></button>
+                    </h4>
+
+<div *ngIf="!editpersona">
+                  <div   *ngFor="let persona of darospersona" class="border-top border-dashed pt-4">
+                   <div class="row flex-between-center mb-2">
+                      <div class="col-auto">
+                        <h5 class="text-body-highlight mb-0">Identificación</h5>
+                      </div>
+                      <div class="col-auto"><a>{{persona.IDENTIFICACION}}</a></div>
+                    </div>
+                                       <div class="row flex-between-center mb-2">
+                      <div class="col-auto">
+                        <h5 class="text-body-highlight mb-0">Nombres</h5>
+                      </div>
+                      <div class="col-auto">
+                      <a >{{persona.NOMBRES}}</a>
+                      </div>
+                    </div>
+                                       <div class="row flex-between-center mb-2">
+                      <div class="col-auto">
+                        <h5 class="text-body-highlight mb-0">Apellidos</h5>
+                      </div>
+                      <div class="col-auto"><a>{{persona.APELLIDOS}}</a></div>
+                    </div>
+  
+
+
+                    <div class="row flex-between-center">
+                      <div class="col-auto">
+                        <h5 class="text-body-highlight mb-0">Teléfono</h5>
+                      </div>
+                      <div class="col-auto"><a>{{persona.TELEFONO}}</a>
+                      </div>
+                    </div>
+                  </div>
+</div>
+
+<div *ngIf="editpersona">
+ <div class="col-sm-6 col-md-4" *ngFor="let persona of darospersona">
+  <div class="form-floating">
+                 <input #identificacion class="form-control" id="floatingInputLastname" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;" maxlength="10" value="{{persona.IDENTIFICACION}}" placeholder="identificacion" style="width: 200px;" />
+                  <label for="floatingInputLastname">Identificación</label>
+                </div>
+                <div class="form-floating">
+                 <input #nombre class="form-control" id="floatingInputLastname" type="text" value="{{persona.NOMBRES}}" placeholder="nombres" style="width: 300px;" />
+                  <label for="floatingInputLastname">Nombres</label>
+                </div>
+                <div class="form-floating">
+                 <input #apellidos class="form-control" id="floatingInputLastname" type="text" value="{{persona.APELLIDOS}}" placeholder="apellidos" style="width: 300px;" />
+                  <label for="floatingInputLastname">Apellidos</label>
+                </div>
+
+
+
+
+
+                <div class="form-floating d-flex align-items-center">
+  <input #telefono class="form-control" id="floatingInputLastname" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;" maxlength="10" type="text" value="{{persona.TELEFONO}}" placeholder="telefono" style="width: 200px; margin-right: 10px;" />
+  <label for="floatingInputLastname" style="margin-right: 10px;">Teléfono</label>
+  <button (click)="guardaPersona(identificacion.value,nombre.value,apellidos.value,telefono.value)" class="btn btn-link p-0" type="button">
+    <span class="fas fa-save fa-2x ms-3 text-body-quaternary"></span>
+  </button>
+</div>
+
+              </div>
+</div>
+
+
+
+
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+    </div>
+
+    
+      </div>
+    </section>
+  </div>
+</main>
+
+
+
+
+  </body>
+
+</html>
