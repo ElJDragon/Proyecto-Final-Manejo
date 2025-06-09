@@ -29,4 +29,5 @@ protected $primaryKey ='CODIGO';
        //de muchos a uno
           return $this->belongsTo('App\Models\CURSOS', 'CURSO');
    }
+
 }

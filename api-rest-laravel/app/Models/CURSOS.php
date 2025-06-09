@@ -12,12 +12,10 @@ protected $table='TCURSOS';
     protected $fillable = [
         'SECUENCIALCURSO',
         'TIPOEVENTO',
-        'HORAS',
-        'CALIFICACION',
         'CODIGOCARRERA',
         'IMAGEN',
         'NOMBRECURSO',
-        'CATEGORIA'
+        'ESTAACTIVO'
 
     ];
 protected $primaryKey ='SECUENCIALCURSO';
@@ -35,7 +33,11 @@ public function CURSOUSUARIO()
        //de muchos a uno
           return $this->belongsTo('App\Models\CARRERA', 'CODIGOCARRERA');
    }
-
+ public function EVENTO()
+   { 
+       //de muchos a uno
+          return $this->belongsTo('App\Models\TIPOSEVENTOS', 'TIPOEVENTO');
+   }
     public function PARAMETROS()
    {//una a muchos
        return $this->hasMany('App\Models\PARAMETROS');
