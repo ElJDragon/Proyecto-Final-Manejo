@@ -1,0 +1,345 @@
+[33mcommit 13fafad0e1d6042ebe312948c9bbe87104181ac5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Mon Jun 16 01:55:06 2025 -0500
+
+    Creacion de componentes y configuracion en angular- front
+
+[33mcommit 12f40564d9a689a53fab1ba92d5d85d5d2599b00[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Mon Jun 9 08:30:30 2025 -0500
+
+    Cambios en los modelos de backlog
+
+[33mcommit a4c587603ace10f80e9463dddff19cac6ac93cd3[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: cd02ea1 31fec04
+Author: Joshua <el.jdragon@gmail.com>
+Date:   Mon Jun 9 05:47:37 2025 -0500
+
+    Merge pull request #15 from ElJDragon/feature/index-estructura
+    
+    Se agrego la codificacion correcta del index
+
+[33mcommit cd02ea11010c4f5455c0de58adc03b4c97d1259c[m
+Merge: d7d7d90 8eabeea
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 05:44:10 2025 -0500
+
+    Merge pull request #14 from ElJDragon/feature/servicios-addComponenthtml-addComponnetTs-add-routingTs
+    
+    Feature/servicios add componenthtml add componnet ts add routing ts
+
+[33mcommit d7d7d900542cfcac73cbdc3a74dd61f2e999df84[m
+Merge: 4e26c5f 4452b9f
+Author: Joshua <el.jdragon@gmail.com>
+Date:   Mon Jun 9 05:36:40 2025 -0500
+
+    Merge pull request #12 from ElJDragon/feature/guardias-administrador-usuario
+    
+    Feature/guardias administrador usuario
+
+[33mcommit 4e26c5f70f9d934262c2dbd0fa8fabf67fee554b[m
+Merge: e4f245d b8c1cfe
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 05:31:30 2025 -0500
+
+    Merge pull request #11 from ElJDragon/feature/frontend-componentes-cambiopwd-carreras-direccion
+    
+    Feature/frontend componentes cambiopwd carreras direccion
+
+[33mcommit e4f245dcefdf2186010022f1eeca81c1d7e9de58[m
+Merge: dbc313c d8bc5cd
+Author: Joshua <el.jdragon@gmail.com>
+Date:   Mon Jun 9 05:28:23 2025 -0500
+
+    Merge pull request #10 from ElJDragon/feature/aplicacion-componentes-usuarios-tipoevento-profile-etc
+    
+    Feature/aplicacion componentes usuarios tipoevento profile etc
+
+[33mcommit dbc313cf2fecc8a5a2ce7c6be1eec2e35c7e1c00[m
+Merge: 3bdb39d 691dd23
+Author: Joshua <el.jdragon@gmail.com>
+Date:   Mon Jun 9 05:21:23 2025 -0500
+
+    Merge pull request #5 from ElJDragon/feature/assets-componentes-estilos
+    
+    Feature/assets componentes estilos
+
+[33mcommit 3bdb39de4ed59f1bc26622d60a86d853a2869db2[m
+Merge: 488b4f5 0e1cc03
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 05:19:11 2025 -0500
+
+    Merge pull request #9 from ElJDragon/feature/aplicacion-componentes-cambiopwd-carreras-etc
+    
+    Merge a Main de Feature/aplicacion componentes cambiopwd carreras etc
+
+[33mcommit 488b4f501bc270c9173eb2b115886f47eec3b91a[m
+Merge: f5d4bd5 0f31f11
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 05:17:32 2025 -0500
+
+    Merge pull request #8 from ElJDragon/feature/Frontend-componentes-mail-personas-user-etc
+    
+    Creacion de modelos  Email, personas, tipos eventos user
+
+[33mcommit 31fec043dffa6fbb414925de4ab7c66a6104800c[m[33m ([m[1;31morigin/feature/index-estructura[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Fri Jun 6 15:14:32 2025 -0500
+
+    Se agrego la codificacion correcta del index
+
+[33mcommit 8eabeea7a1d4865bb54b02e9ca46b59f927d4077[m[33m ([m[1;31morigin/feature/servicios-addComponenthtml-addComponnetTs-add-routingTs[m[33m, [m[1;32mfeature/servicios-addComponenthtml-addComponnetTs-add-routingTs[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Thu Jun 5 23:01:01 2025 -0500
+
+    levantado servicio de routing.ts
+
+[33mcommit 1f8eb12e950ecb6be9050987ca528b73ac02e5f5[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Thu Jun 5 12:36:04 2025 -0500
+
+    Servicio de componnet.ts levantado
+
+[33mcommit 71c33f8d0c8974a384f0c87d6626c166212cc73f[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Thu Jun 5 11:11:42 2025 -0500
+
+    Servicio levantado Component html
+
+[33mcommit 0f31f11d8b23e0705357809e263fd5c6e477e757[m[33m ([m[1;31morigin/feature/Frontend-componentes-mail-personas-user-etc[m[33m, [m[1;32mfeature/Frontend-componentes-mail-personas-user-etc[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Wed Jun 4 20:24:15 2025 -0500
+
+    Creacion de modelos
+
+[33mcommit b8c1cfe64ac1b15207a4db2a3f6c77a8848bc8ab[m[33m ([m[1;31morigin/feature/frontend-componentes-cambiopwd-carreras-direccion[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Wed Jun 4 15:17:05 2025 -0500
+
+    Se agrego el modelo de direcciones
+
+[33mcommit 0e1cc034490c0b65c47ac9911d575a7ac16b72b5[m[33m ([m[1;31morigin/feature/aplicacion-componentes-cambiopwd-carreras-etc[m[33m, [m[1;32mfeature/aplicacion-componentes-cambiopwd-carreras-etc[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Wed Jun 4 14:48:06 2025 -0500
+
+     componente Default y componente Error
+
+[33mcommit 3a548f23c49ecb80bb6cdae3beb1459a9a8b8ad3[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Wed Jun 4 12:35:06 2025 -0500
+
+    Se agrego el modelo carreras
+
+[33mcommit 40a33995ce22eac1d2415d59007d394e4312f15d[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Wed Jun 4 10:17:20 2025 -0500
+
+    Componente de Creacion de Eventos
+
+[33mcommit 8311374c4774336799030997ceef24d7d5e5ea77[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Wed Jun 4 09:13:41 2025 -0500
+
+    Componente de creacion de carrera
+
+[33mcommit 583879e8af14234eaad79908d2e225658ce49d1f[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Tue Jun 3 19:00:22 2025 -0500
+
+    Se agrego el modelo para el cambio de contraseña
+
+[33mcommit 691dd23849cc4d12a573e6bbfa79c60554d89bac[m[33m ([m[1;31morigin/feature/assets-componentes-estilos[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Mon Jun 2 17:27:20 2025 -0500
+
+    Se agregaron recursos visuales y archivos con estilos para aportar a el frontend
+
+[33mcommit f2db928ea45f846895a67d59da3fa5f815fd765a[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Mon Jun 2 16:35:56 2025 -0500
+
+    Creaciond e componente carreras
+
+[33mcommit 3ba2769758fa0d43631772d856bba1c1396f79d9[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Mon Jun 2 15:02:40 2025 -0500
+
+    Se subio los estilos y complementos de la carpeta assets entre ellos la carpeta vendor que estaba limitada por el gitignore
+
+[33mcommit 4452b9f2a9aeb27a53ff30f798b66e5384afd315[m[33m ([m[1;31morigin/feature/guardias-administrador-usuario[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Mon Jun 2 09:32:50 2025 -0500
+
+    Se agrego los guards de los usuarios
+
+[33mcommit 88b84582afd779793325ef0d1961ffa1becf2fb1[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Mon Jun 2 08:40:03 2025 -0500
+
+    Se agrego los guards de los administradores
+
+[33mcommit d8bc5cd61a3e98fdba118da79963925011ec87a0[m[33m ([m[1;31morigin/feature/aplicacion-componentes-usuarios-tipoevento-profile-etc[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Sun Jun 1 22:10:22 2025 -0500
+
+    Se creo el componente destinado al login
+
+[33mcommit 8ab0537b0ba96315a5886257ecf4402a5fb3c418[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Sun Jun 1 20:00:16 2025 -0500
+
+    Se agrego un nuevo componente
+
+[33mcommit aba5eee254eb7d9f551436b216d99592dfc0ed4c[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Sun Jun 1 19:41:30 2025 -0500
+
+    Componente cambio de contrasenia
+
+[33mcommit 5f8d77dec045ba497657de5165449423632b0169[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Sun Jun 1 18:28:04 2025 -0500
+
+    Se agrego el componente persona
+
+[33mcommit f5d4bd5139246491baf3b0c7015d83a599490335[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Sun Jun 1 00:10:12 2025 -0500
+
+    Se elimino el .env y el vendor del gitignore y se creo el archivo .env por temas de funcionamiento del proyecto
+
+[33mcommit af91134e2ebf88a69a2eedcc5ec2a954df1e29bd[m
+Merge: 3e55547 ae00ae4
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 04:09:50 2025 -0500
+
+    Merge pull request #4 from ElJDragon/feature/rutas-de-enlace
+    
+    Feature/rutas de enlace
+
+[33mcommit 3e55547a21f6bff837d61ddf7ec83469568a2c7b[m
+Merge: acd2750 4a65120
+Author: Joshua <el.jdragon@gmail.com>
+Date:   Mon Jun 9 03:50:56 2025 -0500
+
+    Merge pull request #2 from ElJDragon/feature/modelo-controlador-carrera-curso-cursousuario-etc
+    
+    Feature/modelo controlador carrera curso cursousuario etc
+    Aprobada y lisot para merge
+
+[33mcommit acd27504aee6bec75fd9ba4f4676ba9962ecaa29[m
+Merge: 4bccc0a d11e85b
+Author: Sebastián Cortez <152923001+ESebastianC@users.noreply.github.com>
+Date:   Mon Jun 9 03:50:15 2025 -0500
+
+    Merge pull request #3 from ElJDragon/feature/modelo-controlador-provincias-parametros-personas-etc
+    
+    Feature/modelo controlador provincias parametros personas etc terminada, list apara unir a develop
+
+[33mcommit ae00ae47c4e61c16ba505e144e75dbf2c2cf5eaf[m[33m ([m[1;31morigin/feature/rutas-de-enlace[m[33m, [m[1;32mfeature/rutas-de-enlace[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Sat May 31 18:18:03 2025 -0500
+
+    Creacion de rutas para carreras , Tpersonas , usuarios
+
+[33mcommit 7069f7f77ff8d8b204355481f997f9122100cdfc[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Sat May 31 16:03:21 2025 -0500
+
+    Rutas para Tipos de evetos y usuarios
+
+[33mcommit fa7cd2dfc5296aef57e88501a2b705e134b47b25[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Sat May 31 12:22:14 2025 -0500
+
+    Se agrego el componente para los tipos de eventos
+
+[33mcommit d11e85b046e6b2d459497727a81695fd3cfb98be[m[33m ([m[1;31morigin/feature/modelo-controlador-provincias-parametros-personas-etc[m[33m, [m[1;32mfeature/modelo-controlador-provincias-parametros-personas-etc[m[33m)[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Fri May 30 12:46:25 2025 -0500
+
+    Creacion y configuracion de UserController
+
+[33mcommit 85bdaa56c6d8a46da79f3130ae0aa4dff0340e6e[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Thu May 29 22:54:40 2025 -0500
+
+    CRUD para CTipos de eEventos Con tablas uno a muchos
+
+[33mcommit 78d849eefcba2f3b1abdea297b0c3a482c32af3a[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Thu May 29 18:17:20 2025 -0500
+
+    Se agrego el perfil en los componentes
+
+[33mcommit b849c81baa2f439d9d63ac1297c52f25e3ebca4e[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Thu May 29 14:10:12 2025 -0500
+
+    Se agrego el componente usuarios como primer componente en el frontend
+
+[33mcommit 4bccc0a1d0fc9b76e3ff6b391ed2952ec5f345c6[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Thu May 29 10:05:22 2025 -0500
+
+    Se agrego la estructura base del frontend que utilizara angular y typescript
+
+[33mcommit 4a65120971ac49cbba23869a2a2e350948209b6f[m[33m ([m[1;31morigin/feature/modelo-controlador-carrera-curso-cursousuario-etc[m[33m)[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Wed May 28 12:30:34 2025 -0500
+
+    Se agrego el controlador de el perfil de usuario
+
+[33mcommit dc77d1a01063c10bdfc425a747376cc55e36ad8e[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Wed May 28 11:40:23 2025 -0500
+
+    Se agrego el controlador de usuarios
+
+[33mcommit e68538ca4b3f0af2c65e69c9932b978e90fb6de9[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Wed May 28 11:05:33 2025 -0500
+
+    Creacion de CRUD para Cpersonas
+
+[33mcommit 00efa2b78ebed37da0d3af68eef059f03ab47eff[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Tue May 27 18:20:35 2025 -0500
+
+    Se agrego el controlador de carreras
+
+[33mcommit ab4f847b057db944c095299faec25dc994bb31a4[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Tue May 27 18:09:50 2025 -0500
+
+    Creacion y configuracion del controlador de Parametros
+
+[33mcommit 21fb3030008ca13404ce591aa1505b19d0b9a1d2[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Tue May 27 13:30:25 2025 -0500
+
+    Se agrego el modelo de direccion
+
+[33mcommit 4619b5f1d1dff5a7185a45f702a61a824d619d4d[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Tue May 27 12:41:29 2025 -0500
+
+    Correccion modelo de persona a Personas
+
+[33mcommit 97c9e4905f21f812d3a2bd4c2a1b1df687df6873[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Tue May 27 11:37:22 2025 -0500
+
+    Creacion de modelo procinvias
+
+[33mcommit 958ba18b855ce6bcfbc76bdbc748a7ee2cacf693[m
+Author: Sebastian Cortez <ecortez7302@uta.edu.ec>
+Date:   Tue May 27 10:15:14 2025 -0500
+
+    Se agrego el modelo de cantones
+
+[33mcommit 56879badf224bbecb91de52ae97eede11e154cb9[m
+Author: Josue Guevara <el.jdragon@gmail.com>
+Date:   Mon May 26 19:00:05 2025 -0500
+
+    Commit inicial creacion de Repo
