@@ -6,6 +6,14 @@
 
 	<div class="login-html">
 
+		<div  *ngIf="!isigual">
+<a style="color:#ffc451">La contraseña no Coiciden</a>
+</div>
+
+	<div  *ngIf="!iscontrasena">
+<a style="color:#ffc451">La contraseña debe contener al menos un número y un caracter especial</a>
+</div>
+
 
 	<div  *ngIf="status == 'success'">
 <a style="color:#ffc451">Usuario creado correctamente</a>
@@ -20,7 +28,7 @@
 	<a style="color:#ffc451">Usuario y/o Contraseña Incorrectos</a>
 </div>
 <div  *ngIf="status == 'erroremail'">
-	<a style="color:#ffc451">Email aún no resgistrado en el sistema</a>
+	<a style="color:#ffc451">Email ya resgistrado en el sistema</a>
 
 </div>
 
@@ -81,6 +89,10 @@ class="get-started-btn scrollto" style="color:#000">
 					<input required pattern="[a-zA-Z]+" #name="ngModel" [(ngModel)]="user.Nombre" class="form-control form-control-user" style="text-transform:uppercase;" id="name" type="text" class="input">
 				</div>
 								<div class="group">
+					<label for="name" class="label">Apellidos</label>
+					<input required pattern="[a-zA-Z]+" #name="ngModel" [(ngModel)]="user.Apellido" class="form-control form-control-user" style="text-transform:uppercase;" id="apellido" type="text" class="input">
+				</div>
+								<div class="group">
 					<label for="email" class="label">Email</label>
 
 					<input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="Email" #Email="ngModel" [(ngModel)]="user.Email" class="form-control form-control-user"
@@ -90,21 +102,47 @@ class="get-started-btn scrollto" style="color:#000">
                                                 </small>
 
 				</div>
-				<div class="group">
-					<label for="pass" class="label">Contraseña</label>
-					
-					<input name="Password" type="password" class="form-control form-control-user "
-                                                id= "exampleInputPassword"  #Password="ngModel" [(ngModel)]="user.Password" required  class="input" data-type="password">
+
+
+<div class="d-flex gap-3">
+  <div class="group" style="flex: 1">
+    <label for="exampleInputPassword" class="label">Contraseña</label>
+    <input
+      name="Password"
+      type="password"
+      class="form-control form-control-user input"
+      id="exampleInputPassword"
+      #Password="ngModel"
+      [(ngModel)]="user.Password"
+      required
+      data-type="password"
+    />
+  </div>
+
+  <div class="group" style="flex: 1">
+    <label for="pass" class="label">Confirmar</label>
+    <input
+      name="Password2"
+      type="password"
+      class="form-control form-control-user input"
+      id="pass"
+      #Password2="ngModel"
+      [(ngModel)]="user.Password2"
+      required
+      data-type="password"
+    />
+  </div>
+
+
+
+
+
 				</div>
-				<div class="group">
-					<label for="pass" class="label">Confirmar Contraseña</label>
-					<input name="Password2" #Password2="ngModel" [(ngModel)]="user.Password2" id="pass" type="password" class="input" data-type="password">
-				
-				<strong><small *ngIf="!isigual" class="invalid-feedback d-block ">La contraseña no Coiciden</small></strong>
 
 
 
-				</div>
+
+
 
 				<div class="group" align="center">
 					<!--<input type="submit" class="button" value="Registrarse">-->
