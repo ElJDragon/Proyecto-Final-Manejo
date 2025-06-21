@@ -320,6 +320,197 @@ $data = array(
                             }
 
 
+public function registradosa($evento){
+        $integer =0;
+$cursos = CURSOS::where('SECUENCIALCURSO', $evento)->get();
+
+
+
+ foreach($cursos as $curso)
+                {
+
+$porautorizar = CURSOUSUARIO::where('CURSO', $evento)->where('ESTADO','0')->get();
+
+ foreach($porautorizar as $parametro)
+                {
+
+$nombreusuario = Personas::where('USUARIO', $parametro->USUARIO)->get();
+ foreach($nombreusuario as $nombre)
+                {
+$nombres = trim($nombre->APELLIDOS) . ' ' . trim($nombre->NOMBRES);
+$identificacion = trim($nombre->IDENTIFICACION);
+
+                }
+
+        $enviarcursos[$integer] = array(     
+    'SECUENCIALCURSO' => trim($curso->SECUENCIALCURSO),
+    'TIPOEVENTO' => trim($curso->TIPOEVENTO),
+    'NOMBREEVENTO' => trim($curso->EVENTO->NOMBRE),
+    'ESTAACTIVO' => $curso->ESTAACTIVO == 1 ? 'ACTIVO' : 'INACTIVO',
+    'CODIGOCARRERA'=>trim($curso->CODIGOCARRERA),
+    'NOMBRECARRERA'=>trim($curso->CARRERA->NOMBRE),
+    'IMAGEN'=>trim($curso->IMAGEN),
+    'NOMBRECURSO'=>trim($curso->NOMBRECURSO),
+    'USUARIO'=>trim($parametro->USUARIO),
+    'NOMBREUSU'=>$nombres,
+    'IDENTIFICACION'=>$identificacion,
+    'FECHA'=>trim($parametro->FECHA)
+    
+    
+    
+);
+
+         $integer++;
+     }
+                }
+if($integer>0)
+{
+$data = array(
+          'status'=>'success',
+          'code'=>200, 
+          'cursos'=>$enviarcursos,
+          'id'=>1);
+}else
+{
+$data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'No existen registros',
+          'id'=>0
+      );
+         }
+         return response()->json($data,$data['code']);
+                            }
+
+
+public function registradospp($evento,$nombrepersona){
+        $integer =0;
+$cursos = CURSOS::where('SECUENCIALCURSO', $evento)->get();
+
+
+
+ foreach($cursos as $curso)
+                {
+
+$porautorizar = CURSOUSUARIO::where('CURSO', $evento)->where('ESTADO','0')->get();
+
+ foreach($porautorizar as $parametro)
+                {
+
+$nombreusuario = Personas::where('USUARIO', $parametro->USUARIO)
+                ->where('NOMBRES', 'like', '%' . $nombrepersona . '%')
+                ->get();
+
+ foreach($nombreusuario as $nombre)
+                {
+$nombres = trim($nombre->APELLIDOS) . ' ' . trim($nombre->NOMBRES);
+$identificacion = trim($nombre->IDENTIFICACION);
+
+                }
+
+        $enviarcursos[$integer] = array(     
+    'SECUENCIALCURSO' => trim($curso->SECUENCIALCURSO),
+    'TIPOEVENTO' => trim($curso->TIPOEVENTO),
+    'NOMBREEVENTO' => trim($curso->EVENTO->NOMBRE),
+    'ESTAACTIVO' => $curso->ESTAACTIVO == 1 ? 'ACTIVO' : 'INACTIVO',
+    'CODIGOCARRERA'=>trim($curso->CODIGOCARRERA),
+    'NOMBRECARRERA'=>trim($curso->CARRERA->NOMBRE),
+    'IMAGEN'=>trim($curso->IMAGEN),
+    'NOMBRECURSO'=>trim($curso->NOMBRECURSO),
+    'USUARIO'=>trim($parametro->USUARIO),
+    'NOMBREUSU'=>$nombres,
+    'IDENTIFICACION'=>$identificacion,
+    'FECHA'=>trim($parametro->FECHA)
+    
+    
+    
+);
+
+         $integer++;
+     }
+                }
+if($integer>0)
+{
+$data = array(
+          'status'=>'success',
+          'code'=>200, 
+          'cursos'=>$enviarcursos,
+          'id'=>1);
+}else
+{
+$data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'No existen registros',
+          'id'=>0
+      );
+         }
+         return response()->json($data,$data['code']);
+                            }
+
+
+public function eventocod($codigo){
+        $integer =0;
+$cursos = CURSOS::where('SECUENCIALCURSO', $codigo)->get();
+
+ foreach($cursos as $curso)
+                {
+
+$parametros = PARAMETROS::where('CURSO', $curso->SECUENCIALCURSO)->get();
+
+ foreach($parametros as $parametro)
+                {
+
+/*
+$estaregistrado = CURSOUSUARIO::where('CURSO', $curso->SECUENCIALCURSO)
+                               ->where('USUARIO', $usuario)
+                               ->get();
+$registrado=0;
+ foreach($estaregistrado as $estaregistrad)
+                {
+$registrado=1;
+                }
+*/
+
+
+        $enviarcursos[$integer] = array(     
+    'SECUENCIALCURSO' => trim($curso->SECUENCIALCURSO),
+    'TIPOEVENTO' => trim($curso->TIPOEVENTO),
+    'NOMBREEVENTO' => trim($curso->EVENTO->NOMBRE),
+    'ESTAACTIVO' => $curso->ESTAACTIVO == 1 ? 'ACTIVO' : 'INACTIVO',
+'CODIGOCARRERA'=>trim($curso->CODIGOCARRERA),
+'NOMBRECARRERA'=>trim($curso->CARRERA->NOMBRE),
+'IMAGEN'=>trim($curso->IMAGEN),
+'NOMBRECURSO'=>trim($curso->NOMBRECURSO),
+'ESPUBLICO' => $parametro->ESPUBLICO == 1 ? 'PUBLICO' : 'PRIVADO',
+'ESPAGADO' => $parametro->ESPAGADO == 1 ? 'PAGADO' : 'GRATIS',
+'HORAS'=>trim($parametro->HORAS),
+'VALOR'=>trim($parametro->VALOR)
+//'REGISTRADO'=>trim($registrado)
+);
+
+         $integer++;
+     }
+                }
+if($integer>0)
+{
+$data = array(
+          'status'=>'success',
+          'code'=>200, 
+          'cursos'=>$enviarcursos,
+          'id'=>1);
+}else
+{
+$data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'No existen registros',
+          'id'=>0
+      );
+         }
+         return response()->json($data,$data['code']);
+                            }
+
 public function disponiblesp($nombre){
         $integer =0;
 $cursos = CURSOS::where('ESTAACTIVO', '1')
@@ -386,7 +577,7 @@ $data = array(
 
 public function registrados($curso){
         $integer =0;
-$usuarios = CURSOUSUARIO::where('CURSO', $curso)->get();
+$usuarios = CURSOUSUARIO::where('CURSO', $curso)->where('ESTADO', '1')->get();
 
  foreach($usuarios as $usuario)
                 {
@@ -477,6 +668,7 @@ public function nuevoRegistro(Request $request){
     $parametro->CALIFICACION = (int) $params_array['CALIFICACION'];
     $parametro->ASISTENCIA= strtoupper($params_array['ASISTENCIA']);
     $parametro->FECHA= strtoupper($params_array['FECHA']);
+    $parametro->ESTADO= strtoupper($params_array['ESTADO']);
     
     
     if($parametro->save())
@@ -513,9 +705,103 @@ $data = array(
 
 
 
+ // Funcon para actualizar Regisro de la tabla TtiposEventos
+public function updateRegistro($id) {
+    if (!empty($id)) {
+        // Actualizar el usuario en la base de datos
+        $evento_update = CURSOUSUARIO::where('CODIGO', $id)->update(['ESTADO' => '1']);
+
+        // Verificar si se actualizó correctamente (si al menos una fila fue afectada)
+        if ($evento_update) {
+            $data = array(
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Registro actualizado correctamente',
+                'id' => $id
+            );
+        } else {
+            $data = array(
+                'status' => 'error',
+                'code' => 400,
+                'message' => 'No se encontró el registro o no se actualizó'
+            );
+        }
+    } else {
+        $data = array(
+            'status' => 'error',
+            'code' => 404,
+            'message' => 'ID no proporcionado'
+        );
+    }
+
+    return response()->json($data, $data['code']);
+}
 
 
+// Funcon para actualizar Regisro de la tabla TtiposEventos
+public function updateAprobado($id) {
+    if (!empty($id)) {
+        // Actualizar el usuario en la base de datos
+        $evento_update = CURSOUSUARIO::where('CODIGO', $id)->update(['ASISTENCIA' => '1']);
 
+        // Verificar si se actualizó correctamente (si al menos una fila fue afectada)
+        if ($evento_update) {
+            $data = array(
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Registro actualizado correctamente',
+                'id' => $id
+            );
+        } else {
+            $data = array(
+                'status' => 'error',
+                'code' => 400,
+                'message' => 'No se encontró el registro o no se actualizó'
+            );
+        }
+    } else {
+        $data = array(
+            'status' => 'error',
+            'code' => 404,
+            'message' => 'ID no proporcionado'
+        );
+    }
+
+    return response()->json($data, $data['code']);
+}
+
+
+// Funcon para actualizar Regisro de la tabla TtiposEventos
+public function updateReprobado($id) {
+    if (!empty($id)) {
+        // Actualizar el usuario en la base de datos
+        $evento_update = CURSOUSUARIO::where('CODIGO', $id)->update(['ASISTENCIA' => '0']);
+
+        // Verificar si se actualizó correctamente (si al menos una fila fue afectada)
+        if ($evento_update) {
+            $data = array(
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Registro actualizado correctamente',
+                'id' => $id
+            );
+        } else {
+            $data = array(
+                'status' => 'error',
+                'code' => 400,
+                'message' => 'No se encontró el registro o no se actualizó'
+            );
+        }
+    } else {
+        $data = array(
+            'status' => 'error',
+            'code' => 404,
+            'message' => 'ID no proporcionado'
+        );
+    }
+
+    return response()->json($data, $data['code']);
+}
 
 
 
