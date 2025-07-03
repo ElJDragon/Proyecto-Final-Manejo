@@ -148,6 +148,7 @@ this.primerParametro = this.parametro.parametro;
       response => {
         if (response.status === "success") {
           this.eventosp = response.cursos;
+          console.log(this.eventosp);
           this.registrototal = this.eventosp.length;
           this.totaldepaginas = this.registrototal / this.registrosxpagina;
           this.ispaginacion = this.registrototal > this.registrosxpagina;
@@ -179,7 +180,7 @@ this.primerParametro = this.parametro.parametro;
     }, 1000);
   }
 
-  getVehiculosParametros() {
+  getRegistradosParametros() {
     this.parametronom = document.getElementById('pnombres') as HTMLInputElement | null;
     if (this.parametronom && this.parametronom.value !== '') {
       this.getEventos1p();
