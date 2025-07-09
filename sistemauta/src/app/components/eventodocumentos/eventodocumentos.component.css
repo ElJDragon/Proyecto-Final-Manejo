@@ -1,0 +1,124 @@
+.texto-borde {
+  color: #D81324;
+    padding: 20px 25px;
+font-size:30px;
+   font-family: Verdana;
+  font-family: 'PT Sans';
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: sans-serif;
+}
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .pagination {
+
+  position: relative;
+  height: 60px;
+  background: #E2F4F5;
+
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  border-radius: 2px;
+}
+.container .pagination li {
+
+  list-style-type: none;
+  display: inline-block;
+}
+.container .pagination li a {
+    border-color:#ffc451;
+  position: relative;
+  padding: 20px 25px;
+  text-decoration: none;
+  color: #E4A42B;
+  font-weight: 500;
+}
+.container .pagination li a:hover,
+.container .pagination li.active a {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+table {
+  width: 60%;
+  height: 30px;
+
+  
+
+}
+table tr {
+  text-align: left;
+
+}
+table th {
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+table th {
+  color: #000;
+  background-color: #fff;
+}
+
+.dropdown {
+  position: relative;
+
+}
+
+.dropbtn {
+  padding: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #E2F4F5;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px #E2F4F5;
+  z-index: 1;
+  max-height: 170px; /* Ajusta según sea necesario para mostrar solo una parte */
+  overflow-y: auto;
+}
+
+
+.btn-redondeado {
+  border-radius: 20px; /* Define el radio de los bordes */
+  padding: 10px 20px; /* Espacio interno del botón */
+  background-color: #D81324; /* Color de fondo */
+  color: #fff; /* Color del texto */
+border: 2px solid #007bff; 
+
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition: background-color 0.3s; /* Agrega una transición suave al color de fondo */
+}
+
+.btn-redondeado:hover {
+  background-color: #AB0909; /* Cambia el color de fondo al pasar el ratón */
+}
+
+.bordess {
+border: 2px solid #007bff; 
+}

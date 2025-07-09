@@ -29,13 +29,20 @@ export class CrearcursoComponent implements OnInit {
   public codigoEventop: any;
   public pagadop: any;
   public publicop: any;
-
+public parametrovalor:any;
+public parametrocal:any;
+public parametroasi:any;
   public cursos: Cursos;
   public parametros: Parametros;
-
+  public calificacionp: any;
+  public asistenciap: any;
   public mostraruno: boolean = true;
   public mostrardos: boolean = false;
   public mostrartres: boolean = false;
+
+  public valornuevo: any ;
+  public calificacionnuevo: any;
+  public horasnuevo: any;
 
   public botoncurso: boolean = true;
   public guardarcurso: boolean = false;
@@ -88,7 +95,6 @@ export class CrearcursoComponent implements OnInit {
   }
 
   onErroradjunto(event: Event) {
-    alert('entro al docuemnto imagen');
     (event.target as HTMLImageElement).src = this.urlStorage + 'adjunto.png';
   }
 
@@ -122,7 +128,13 @@ export class CrearcursoComponent implements OnInit {
     this.codigoEventop = selectElement.value;
   }
 
-  guardarCurso($nombre: any) {
+
+
+  guardarCurso($nombre: any,$valor: any,$calificacion: any,$horas: any) {
+    this.valornuevo = $valor;
+    this.calificacionnuevo = $calificacion;
+    this.horasnuevo = $horas;
+
     if ($nombre != '') {
       this.cursos = new Cursos('', this.codigoEventop, this.codigoCarrerap, '', $nombre, '0');
       this._cursosService.guardarCurso(this.cursos).subscribe(
@@ -154,15 +166,44 @@ export class CrearcursoComponent implements OnInit {
     }
   }
 
-  EventoPagado(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    this.pagadop = selectElement.value;
+EventoPagado(event: Event) {
+  const checkbox = event.target as HTMLInputElement;
+  this.pagadop = checkbox.checked ? '1' : '0';
+  this.parametrovalor = document.getElementById('valor') as HTMLInputElement | null;
+  if(this.pagadop==0)
+  {
+  this.parametrovalor.value=0;
   }
+}
 
-  EventoPublico(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    this.publicop = selectElement.value;
+EventoPublico(event: Event) {
+  const checkbox = event.target as HTMLInputElement;
+  this.publicop = checkbox.checked ? '1' : '0';
+}
+
+EventoCalificacion(event: Event) {
+  const checkbox = event.target as HTMLInputElement;
+  this.calificacionp = checkbox.checked ? '1' : '0';
+    this.parametrocal = document.getElementById('calificacion') as HTMLInputElement | null;
+  if(this.calificacionp==0)
+  {
+  this.parametrocal.value=0;
   }
+}
+
+EventoAsistencia(event: Event) {
+  const checkbox = event.target as HTMLInputElement;
+  this.asistenciap = checkbox.checked ? '1' : '0';
+    this.parametroasi = document.getElementById('horas') as HTMLInputElement | null;
+  if(this.asistenciap==0)
+  {
+  this.parametroasi.value=0;
+  }
+}
+
+
+
+
 
   guardarParametros($valor: any, $calificacion: any, $horas: any) {
     this.parametros = new Parametros('', this.imagenasignada, this.publicop, this.pagadop, $valor, $horas, $calificacion);
@@ -197,6 +238,7 @@ export class CrearcursoComponent implements OnInit {
       this.http.post(this.urlApi + 'cursos/' + this.imagenasignada + '.', formData).subscribe(
         response => {
           console.log('Archivo subido correctamente:', response);
+          this.guardarParametros(this.valornuevo, this.calificacionnuevo, this.horasnuevo);
         },
         error => {
           console.error('Error al subir archivo:', error);
@@ -234,7 +276,8 @@ export class CrearcursoComponent implements OnInit {
     this._eventoService.getEvento().subscribe(
       response => {
         if (response.status == "OK") {
-          console.log(response);
+
+
           this.eventosp = response.tipos;
           
           console.log(this.eventosp);

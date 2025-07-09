@@ -192,69 +192,88 @@ Creación de un Nuevo Evento
 
                              <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
 
-                          <button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
-
+                          <!--<button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+                          -->
 
 
                           <button   style="display:none"  class="btn btn-primary px-6 px-sm-6" type="submit" data-wizard-next-btn="data-wizard-next-btn">ccccc<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
                         </div>
-                        </div>
 
 
-
-
-<!--PASO DOS--------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------------ -->
-
-
-
-<!--MOSTRAR EL PRIMER FORMULARIOS-->
-<div *ngIf="mostrardos" class="tab-pane active" role="tabpanel" aria-labelledby="bootstrap-wizard-tab1" id="bootstrap-wizard-tab1">
+<!--MOSTRAR EL PRIMER FORMULARIOS *ngIf="mostrardos" -->
                            <form class="needs-validation" id="wizardValidationForm1" novalidate="novalidate" data-wizard-form="1">
+                           
+<div class="mb-2 form-check">
+  <input 
+    type="checkbox" 
+    class="form-check-input" 
+    id="pagado" 
+    (change)="EventoPagado($event)"
+  />
+  <label class="form-check-label" for="pagado">
+    El evento es Pagado
+  </label>
+</div>
 
- <div class="mb-2">
-                              <label class="form-label" for="bootstrap-wizard-gender">El evento es Pagado</label>
-                              <select (change)="EventoPagado($event)" required="required" class="form-select" name="gender" id="pagado">
-                                <option value="">Selecciona un opcion...</option>
-                                <option value="1">1 SI</option>
-                                <option value="0">2 NO</option>
-                              </select>
-                              <div class="invalid-feedback">Por favor selecciona un opcion</div>
-                            </div>
 
 
-                            <div class="mb-2">
-                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Costo del Evento</label>
+                            <div [hidden]="pagadop !== '1'" class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Ingrese el Costo del Evento</label>
 
 
                               <input #valor class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="valor" value="0"/>
+
                               <div class="invalid-feedback">Por favor ingresa una Valor</div>
                             </div>
 
 
 
- <div class="mb-2">
-                              <label class="form-label" for="bootstrap-wizard-gender">El evento es Público</label>
-                              <select (change)="EventoPublico($event)" required="required" class="form-select" name="gender" id="publico">
-                                <option value="">Selecciona un opcion...</option>
-                                <option value="1">1 SI</option>
-                                <option value="0">2 NO</option>
-                              </select>
-                              <div class="invalid-feedback">Por favor selecciona un opcion</div>
-                            </div>
+<div class="mb-2 form-check">
+  <input 
+    type="checkbox" 
+    class="form-check-input" 
+    id="pagado" 
+    (change)="EventoPublico($event)"
+  />
+  <label class="form-check-label" for="pagado">
+    El evento es Público
+  </label>
+</div>
 
 
-                            <div class="mb-2">
-                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Calificación</label>
-                              <input #calificacion class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="calificacion" />
+<div class="mb-2 form-check">
+  <input 
+    type="checkbox" 
+    class="form-check-input" 
+    id="pagado" 
+    (change)="EventoCalificacion($event)"
+  />
+  <label class="form-check-label" for="pagado">
+    El evento Requiere de Calificación
+  </label>
+</div>
+
+
+                            <div [hidden]="calificacionp !== '1'" class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Ingrese la Calificación mínima para Aprobar</label>
+                              <input #calificacion class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="calificacion" value="0"/>
                               <div class="invalid-feedback">Por favor ingresa una calificación</div>
                             </div>
 
-
-                            <div class="mb-2">
-                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Total de Horas</label>
-                              <input #horas class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="horas" />
+<div class="mb-2 form-check">
+  <input 
+    type="checkbox" 
+    class="form-check-input" 
+    id="pagado" 
+    (change)="EventoAsistencia($event)"
+  />
+  <label class="form-check-label" for="pagado">
+    El evento Requiere de Asistencia
+  </label>
+</div>
+                            <div [hidden]="asistenciap !== '1'" class="mb-2">
+                              <label class="form-label text-body" for="bootstrap-wizard-wizard-name">Ingrese la duración del Evento</label>
+                              <input #horas class="form-control" type="text" onkeypress="if(event.keyCode < 46 || event.keyCode > 57 || event.keyCode == 47) event.returnValue = false;"  name="name" placeholder="Educación Financiera" required="required" id="horas" value="0" />
                               <div class="invalid-feedback">Por favor el total de horas</div>
                             </div>
 
@@ -266,8 +285,9 @@ Creación de un Nuevo Evento
 
                              <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
 
-                          <button  *ngIf="botoncurso" (click)="guardarParametros(valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
-
+                          <!--<button  *ngIf="botoncurso" (click)="guardarParametros(valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+--><button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value,valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+  
                         </div>
 
 
@@ -285,7 +305,7 @@ Creación de un Nuevo Evento
 
 
 
-<div *ngIf="mostrartres">
+<div *ngIf="mostrardos">
                               <div class="text-center text-sm-start"><img class="d-dark-none" src="../../assets/img/spot-illustrations/38.webp" alt="" width="220" />
                                 <br>
 <label *ngIf="fincurso"  class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Curso creado con éxito</label>
@@ -296,7 +316,7 @@ Creación de un Nuevo Evento
                             <div class="col-12 col-sm-auto">
                               <div class="text-center text-sm-start">
                                 <h5 class="mb-3">Finalizar Creación!</h5>
-                                <p class="text-body-emphasis fs-9">Recuerde Habilitar el curso<br />en la opción de Mantenimiento</p><a class="btn btn-primary px-6" (click)="fincursos()">Finalizar</a>
+                                <p class="text-body-emphasis fs-9">Recuerde Habilitar el curso<br />en la opción de Mantenimiento</p>
                               </div>
                             </div>
 </div>

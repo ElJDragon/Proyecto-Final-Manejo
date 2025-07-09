@@ -16,7 +16,8 @@ protected $table='TCURSOSUSUARIO';
         'CURSO',
         'CALIFICACION',
         'ASISTENCIA',
-        'FECHA'
+        'FECHA',
+        'ESTADO'
 
     ];
 protected $primaryKey ='CODIGO';
@@ -28,6 +29,11 @@ protected $primaryKey ='CODIGO';
    { 
        //de muchos a uno
           return $this->belongsTo('App\Models\CURSOS', 'CURSO');
+   }
+      public function USUARIOSS()
+   { 
+       //de muchos a uno
+          return $this->belongsTo('App\Models\User', 'USUARIO');
    }
 
 }

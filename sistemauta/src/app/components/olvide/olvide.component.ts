@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import Popper from "popper.js";
 import { Mail } from '../../models/mail';
@@ -15,7 +14,6 @@ export class OlvideComponent {
 
 
 public page_tittle: string;
-public user: User;
 public status: string ="";
 public opcionSeleccionada: string = '';
 public campoEntrada: string = '';
@@ -46,7 +44,6 @@ constructor(private _UserService: UserService,
             private _router: Router,  
             private _route: ActivatedRoute){
   this.page_tittle='Regístrate';
-  this.user = new User(1,'', '', '', '', '', '');
   this.mailp= new Mail('','','','');
 }
 

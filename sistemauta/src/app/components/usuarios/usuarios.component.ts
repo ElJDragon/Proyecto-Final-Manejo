@@ -87,7 +87,7 @@ public isedicion:boolean=false;
 this.identity=this._UserService.getIdentity();
 this.token=this._UserService.getToken();
 //this.personasmod= new Personas('','','','','','','');
-this.usermod= new User(1,'','','','','','');
+this.usermod= new User(1,'','','','','','','');
 
 
   this.roles=[
@@ -97,7 +97,7 @@ this.usermod= new User(1,'','','','','','');
   },
   {
     "name": '2',
-    "value": 'RESPONSABLE'
+    "value": 'ESTUDIANTE'
   }];
 
   }
@@ -138,7 +138,7 @@ this.errortelefono=false;
   this.codigodep=this.depaantes;
 }
 
-this.usermod= new User(this.codigomodificar,nombresnuevos.value.toUpperCase(),emailnuevo.value,'','','',this.codigodep);
+this.usermod= new User(this.codigomodificar,nombresnuevos.value.toUpperCase(),'',emailnuevo.value,'','','',this.codigodep);
 this._UserService.updateUsuario(this.token,this.usermod,this.codigomodificar).subscribe(
 
 response => {

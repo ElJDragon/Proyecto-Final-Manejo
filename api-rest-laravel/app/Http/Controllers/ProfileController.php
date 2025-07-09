@@ -8,6 +8,8 @@ use App\Models\Personas;
 use App\Models\Provincias;
 use App\Models\Cantones;
 use App\Models\Direccion;
+use App\Models\CURSOUSUARIO;
+
 use App\Helpers\JwtAuth;
 
 
@@ -151,6 +153,47 @@ $data = array(
 
 
 
+public function datosregistro($evento,$usuario){
+        $integer =0;
+        $parametro=trim($evento);
+        $parametro2=trim($usuario);
+$personas = CURSOUSUARIO::where(
+                     [ 
+                         ['CURSO',$parametro],
+                         ['USUARIO',$parametro2]
+                     ])->get(); 
+
+ foreach($personas as $persona)
+                {
+         $enviarpersona[$integer] = array(   
+         'CODIGO'=>trim($persona->CODIGO),  
+             'USUARIO'=>trim($persona->USUARIO),
+             'CURSO'=>trim($persona->CURSO),
+             'CALIFICACION'=>trim($persona->CALIFICACION),
+             'ASISTENCIA'=>trim($persona->ASISTENCIA),
+             'FECHA'=>trim($persona->FECHA),         
+             'ESTADO'=>trim($persona->ESTADO)
+        );
+         $integer++;
+                }
+if($integer>0)
+{
+$data = array(
+          'status'=>'success',
+          'code'=>200, 
+          'persona'=>$enviarpersona);
+}else
+{
+$data = array(
+          'status'=>'error',
+          'code'=>404, 
+          'message'=>'No existen registros');
+         }
+         return response()->json($data,$data['code']);
+                            }
+
+
+
 public function getdatospersona($id){
         $integer =0;
         $parametro=trim($id);
@@ -161,7 +204,8 @@ $personas = Personas::where(
 
  foreach($personas as $persona)
                 {
-         $enviarpersona[$integer] = array(     
+         $enviarpersona[$integer] = array(   
+         'ID'=>trim($persona->ID),  
              'IDENTIFICACION'=>trim($persona->IDENTIFICACION),
              'NOMBRES'=>trim($persona->NOMBRES),
              'APELLIDOS'=>trim($persona->APELLIDOS),
@@ -185,8 +229,6 @@ $data = array(
          }
          return response()->json($data,$data['code']);
                             }
-
-
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////

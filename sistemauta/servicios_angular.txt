@@ -1,0 +1,800 @@
+// auth.service.ts
+import { Injectable } from '@angular/core';
+import { UserService } from '../services/user.service';
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  // Implementa lógica para verificar roles aquí
+
+      public token: string ="";
+public identity: string ="";
+public bool:boolean=false;
+public responsablesp:any;
+public status: string ="";
+public role: string ="";
+
+   constructor(private serService: UserService) {
+
+    this.identity=this.serService.getIdentity();
+this.token=this.serService.getToken();
+ this.bool=false;
+  }
+
+
+
+
+  isAdmin(rol: any): boolean {
+
+       
+    this.serService.getUserid(this.identity.sub).subscribe(
+response => {
+  if(response.status = "success")
+{
+
+this.responsablesp = response.user;
+   for (let numero of this.responsablesp){
+    this.role=numero.role;
+}
+
+
+if(this.role==rol)
+{
+  this.bool=true;
+}else
+{
+  this.bool=false;
+  }
+
+
+
+}else
+{
+this.status='errorroles';
+  this.bool=false;
+}
+},
+error=>{
+this.status='errorroles';
+  this.bool=false;
+}
+      );
+
+    return this.bool;
+  }
+
+}
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class CarrerasService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+	 	 updateCarrera(token: any,arrayevento: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(arrayevento);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateCarrera/'+codigo, params, {headers:headers});			
+	 }
+
+
+	 	 //metodo para obtener todos los responsables
+getCarrera():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'carreras', {headers:headers});
+	 }
+
+	 getCarrera1p(nombres: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'carrerasLike/'+nombres, {headers:headers});
+	 }
+
+	 deleteCarrera(token: any,id: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaCarrera/'+id, {headers:headers});			
+	 }
+
+	 	 guardarCarrera(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevaCarrera', params, {headers:headers});
+
+	 }
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class CursosService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+guardarCurso(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoCurso', params, {headers:headers});
+
+	 }
+
+
+guardarParametros(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoParametro', params, {headers:headers});
+
+	 }
+
+	 guardarRegistro(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoRegistro', params, {headers:headers});
+
+	 }
+
+getCursosAdmin():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'cursosadmin', {headers:headers});
+	 }
+	 
+getEventos(usuario: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'disponibles/'+usuario, {headers:headers});
+	 }
+getRegistrados(evento: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'registradosa/'+evento, {headers:headers});
+	 }
+getRegistradosP(evento: any,parametro: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'registradospp/'+evento+'/'+parametro, {headers:headers});
+	 }
+getEventosCodigo(codigo: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'eventocod/'+codigo, {headers:headers});
+	 }
+
+getEventosR(evento: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'registrados/'+evento, {headers:headers});
+	 }
+
+getEventosP(nombre: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'disponiblesp/'+nombre, {headers:headers});
+	 }
+
+
+	 updateCurso(token: any,parametros: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(parametros);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updatecurso/'+codigo, params, {headers:headers});			
+	 }
+	 
+
+
+	 	 updateRegistros(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateRegistro/'+codigo,{headers:headers});			
+	 }
+
+
+	 	 updateAprobar(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateAprobado/'+codigo,{headers:headers});			
+	 }
+
+	 	 	 updateReprobar(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateReprobado/'+codigo,{headers:headers});			
+	 }
+
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class DocumentosService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+	 	 updateDocumento(token: any,arrayevento: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(arrayevento);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateDocumento/'+codigo, params, {headers:headers});			
+	 }
+
+
+	 	 //metodo para obtener todos los responsables
+getDocumento():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'tiposdocumento', {headers:headers});
+	 }
+
+	 getParametroPP(parametro: any,persona: any,curso: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'documentosPP/'+parametro+'/'+persona+'/'+curso, {headers:headers});
+	 }
+
+	 	 getParametro(parametro: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'documentoP/'+parametro, {headers:headers});
+	 }
+
+	 getDocumento1p(nombres: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'documentosLike/'+nombres, {headers:headers});
+	 }
+
+	 deleteDocumento(token: any,id: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminadocumentos/'+id, {headers:headers});			
+	 }
+	 	 deleteAdjunto(token: any,documento: any,persona: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaadjuntos/'+documento+'/'+persona, {headers:headers});			
+	 }
+
+	 	 guardarDocumento(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoDocumento', params, {headers:headers});
+
+	 }
+
+	 	 guardarAdjunto(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoAdjunto', params, {headers:headers});
+
+	 }
+
+	 	 	 guardarComprobante(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoPago', params, {headers:headers});
+
+	 }
+
+	 	 guardarEveDocumento(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevoEveDocumento', params, {headers:headers});
+
+	 }
+
+	 	 deleteEveDocumento(token: any,evento: any,documento: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaevedocumentos/'+evento+'/'+documento, {headers:headers});			
+	 }
+
+	 	 //metodo para obtener todos los responsables
+    getDocumentoAdj(persona: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'tiposdocumentoAdj/'+persona, {headers:headers});
+	 }
+	 	 //metodo para obtener todos los responsables
+    getDocumentoAdjP(persona: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'tiposdocumentoAdjP/'+persona, {headers:headers});
+	 }
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class EventosService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+	 	 updateEvento(token: any,arrayevento: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(arrayevento);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateEvento/'+codigo, params, {headers:headers});			
+	 }
+
+
+	 	 //metodo para obtener todos los responsables
+getEvento():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'tiposeventos', {headers:headers});
+	 }
+
+	 getEvento1p(nombres: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'eventosLike/'+nombres, {headers:headers});
+	 }
+
+	 deleteEvento(token: any,id: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaeventos/'+id, {headers:headers});			
+	 }
+
+	 	 guardarEvento(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevaEvento', params, {headers:headers});
+
+	 }
+}//global.ts es un archivo para parametrizacion globales 
+export var global = {
+	url: 'http://www.sistemautagrupo81.com/api/',
+	   storage: 'http://www.sistemautagrupo81.com/storage/',
+	   adjuntos: 'http://www.sistemautagrupo81.com/storage/adjuntos/',
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class MisionService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+	 	 //metodo para obtener todos los responsables
+getMision():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'mision', {headers:headers});
+	 }
+
+
+	 	 updateMision(token: any,arrayevento: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(arrayevento);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateMision/'+codigo, params, {headers:headers});			
+	 }
+
+
+
+
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class MonitoreoService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+		 guardarDireccion(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'insertDireccion', params, {headers:headers});
+
+	 }
+
+	
+
+	 	 	 actualizaPersona(token: any,codigo: any,param: any):Observable<any>
+	 {
+	let json = JSON.stringify(param);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updatePerson/'+codigo, params, {headers:headers});			
+	 }
+
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class PersonaService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+	 	 updatePersona(token: any,arrayevento: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(arrayevento);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updatePersona/'+codigo, params, {headers:headers});			
+	 }
+
+
+	 	 //metodo para obtener todos los responsables
+getPersona():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'personas', {headers:headers});
+	 }
+
+	 getPersona1p(nombres: any,apellidos: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'personasLike/'+nombres+'/'+apellidos, {headers:headers});
+	 }
+
+	 deletePersona(token: any,id: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaPersona/'+id, {headers:headers});			
+	 }
+
+	 	 guardarPersona(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'nuevaPersona', params, {headers:headers});
+
+	 }
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { global } from './global';
+
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+@Injectable() 
+export class ProfileService
+{
+	public url: string;
+	
+	 constructor (private _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+
+	  getProvince():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'provincias', {headers:headers});
+	 }
+	 	 getCantones():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'cantones', {headers:headers});
+	 }
+	 getCantonesp(codigo: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'cantones/'+codigo, {headers:headers});
+	 }
+	 getDireccion(usuario: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'direccion/'+usuario, {headers:headers});
+	 }
+	 getDatosPersona(usuario: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'datospersona/'+usuario, {headers:headers});
+	 }
+	 getPersonaRegistro(evento: any,usuario: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'datosregistro/'+evento+'/'+usuario, {headers:headers});
+	 }
+
+}import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable } from 'rxjs';
+import { User } from '../models/user';
+import { global } from './global';
+
+
+//definir la clases del injectable
+//los sercicios nos sirve para la conexion con el backend
+
+//@Injectable() 
+
+@Injectable({
+  providedIn: 'root'
+})
+
+
+
+export class UserService
+{
+	public url: string;
+    public identity:any;
+    public token:any;
+	
+	 constructor (public _http: HttpClient){
+	 	this.url= global.url;
+	 }
+
+	 test(){
+
+	 }
+
+//metodo para enviar la informacion al backend y guardar un nuevo usuario
+	 register(user: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(user); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'register', params, {headers:headers});
+
+	 }
+
+
+	 	 //actualizar usuario
+	 cambiopwd(token: any,user: any):Observable<any>
+	 {
+	let json = JSON.stringify(user);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+
+	//por ultimo hago la petición por put
+	return this._http.put(this.url +'updatepwd', params, {headers:headers});			
+	 }
+
+//metodo para iniciar sesion
+	 signup(user: any, gettoken: any): Observable<any>{
+	 	if(gettoken!=null){
+	 		user.gettoken='true';
+	 	}
+	 	let json =JSON.stringify(user); 
+	    let params ='json='+json;
+	    let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	    return this._http.post(this.url+'login', params, {headers:headers});
+	 }
+
+	 //actualizar usuario
+	 update(token: any,user: any):Observable<any>
+	 {
+	let json = JSON.stringify(user);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+
+	//por ultimo hago la petición por put
+	return this._http.put(this.url +'update', params, {headers:headers});			
+	 }
+
+	 //conseguir la informacion del usuario
+	 getIdentity()
+	 {
+	let identity =localStorage.getItem('identity');
+	if(identity && identity!="undefined"){
+		this.identity=JSON.parse(identity);	
+	}else{this.identity=null;}
+	return this.identity;
+	}
+	getToken()
+	 {
+//let token =JSON.parse(localStorage.getItem('token'));
+	 	let token =localStorage.getItem('token');
+	if(token && token!="undefined"){
+		this.token=token;
+	}else{this.token=null;}
+	return this.token;
+	 }
+
+ 
+	 	 getrole(user: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'perfilUsuario/'+user, {headers:headers});
+}
+
+getAll():Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'getAllUser', {headers:headers});
+}
+
+	 //actualizar usuario
+	 updateRol(id: any,token: any,user: any):Observable<any>
+	 {
+	let json = JSON.stringify(user);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.put(this.url +'updaterol/'+id, params, {headers:headers});			
+	 }
+
+	 deleteUsuario(token: any,id: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	//por ultimo hago la petición por put
+	return this._http.delete(this.url +'eliminaruser/'+id, {headers:headers});			
+	 }
+
+	 	 updateUsuario(token: any,usuario: any,codigo: any):Observable<any>
+	 {
+	let json = JSON.stringify(usuario);
+	//enviar parametros por post o por put
+	let params = "json="+json;
+	console.log(params);
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateUsuario/'+codigo, params, {headers:headers});			
+	 }
+
+	 getUsuario1p(nombres: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'getAllUser/'+nombres, {headers:headers});
+	 }
+
+	 getUserid(codigo: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'getUserid/'+codigo, {headers:headers});
+	 }
+
+
+
+	 	 	 recuperarContraseña(parametros: any): Observable<any>{
+	 	//convierto en string para el envío
+	 	let json =JSON.stringify(parametros); 
+	 	let params ='json='+json;
+	 	console.log(params);
+	 	let headers =new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.post(this.url+'correorecuperacion', params, {headers:headers});
+
+	 }
+}

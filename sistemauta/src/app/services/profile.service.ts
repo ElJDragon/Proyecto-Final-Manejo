@@ -38,5 +38,9 @@ export class ProfileService
 	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
 	 	return this._http.get(this.url+'datospersona/'+usuario, {headers:headers});
 	 }
+	 getPersonaRegistro(evento: any,usuario: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'datosregistro/'+evento+'/'+usuario, {headers:headers});
+	 }
 
 }

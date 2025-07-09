@@ -1,0 +1,151 @@
+<html>
+<head>
+  </head>
+  <body>
+
+  <section id="contact" class="contact">
+
+
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <iframe id="pdfFrame" src="" width="100%" height="500px"></iframe>
+  </div>
+</div>
+
+        <!-- MODAL PARA ELIMINAR -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+<div style="background-image: url('/assets/img/carreter.jpg'); background-size: cover; background-position: center; height: 24vh; margin: 0; ">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Está seguro de Autorizar el Registro
+      </div>
+      <div class="modal-footer">
+         <a style="background-color: #B9C585;" class="btn-redondeado" data-dismiss="modal">Cerrar</a>
+&nbsp;&nbsp;            
+ <a (click)="modificarregistro()" class="btn-redondeado">Autorizar<i class="fa fa-arrow-right ms-3"></i></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+
+
+  <div class="row mt-5">
+
+
+<div class="row">
+
+
+
+          <div  class="col-xs-6 text-center">
+
+            <form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+              
+<span class="texto-borde">Documentos de {{NOMBRES}}</span>
+             <hr>
+             <br>
+<div class="row d-flex justify-content-center">
+
+
+
+
+
+<table class="table table-bordered">
+  <thead class="col-lg-4">
+    <tr  align="center" >
+      <th class="col-0" >
+     
+      </th> 
+      <th class="col-6">
+        
+      </th>
+
+      <th class="col-1">
+</th>
+
+
+
+    </tr>
+    <tr align="center">
+      <th class="col-0">Código</th>
+      <th class="col-4">Nombre</th>
+      <th class="col-4">Documento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let evento of eventosp">
+    
+      <th class="col-0" style=" font-size:100%">{{evento.CODIGO}}</th>
+
+
+      <td *ngIf="this.codigomodificar!=evento.CODIGO" class="col-2" style="font-size:80%">{{evento.NOMBRE}}</td>
+
+
+
+<td *ngIf="1==evento.ADJUNTO">
+                  <div  class="swiper-slide w-sm-auto"  >
+                  <a class="position-relative rounded-3 overflow-hidden d-block" >
+                    <div class="img-backdrop-faded">
+                      <div class="image-reveal-content mb-3">
+                        <div   class="d-flex align-items-center gap-2 mb-2">
+
+
+<div>
+  <a class="mb-0 text-secondary-lighter fw-semibold" href="#" 
+     (click)="openModal(urlAdjuntos + evento.CODIGO + '.' + evento.FORMATO, $event)">
+    VER
+  </a>
+
+</div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </a></div>
+</td>
+
+
+    </tr>
+
+<tr><td></td><td></td>
+	<td >
+
+
+ <button style="background-color: #fa985c;" data-toggle="modal" data-target="#exampleModal" class="btn btn-phoenix-secondary"><span class="fas fa-save me-2"></span>Autorizar</button>
+
+	</td>
+</tr>
+  </tbody>
+
+</table>
+  <div style="padding: 6px 10px 7px 10px;" class="alert alert-success col-md-5 mt-3" *ngIf="status == 'success'">
+El registro se ha realizado correctamente
+</div>
+</div>
+
+
+            </form>
+
+          </div>
+</div>
+        </div>
+
+
+
+</form>
+
+    </section><!-- End Contact Section -->
+  </body>
+  </html>
+
+

@@ -103,7 +103,7 @@
       'linear-gradient(180deg, rgba(0, 0, 0, 0) 39.41%, rgba(0, 0, 0, 0.4) 100%), url(' + urlStorage + 'cursos/' + cursos.IMAGEN + '.jpg)'"
   ></div>
 
-  <!-- Texto encima -->
+  <!-- Texto de estado (ACTIVO / INACTIVO) en la esquina superior izquierda -->
   <div 
     class="position-absolute top-0 start-0 p-2" 
     style="z-index: 2;"
@@ -122,10 +122,7 @@
     </span>
   </div>
 
-
-
-
-    <!-- Combo para activar/inactivar -->
+  <!-- Combo para activar/inactivar en la esquina superior derecha -->
   <div class="position-absolute top-0 end-0 p-2" style="z-index: 2;">
     <select 
       class="form-select form-select-sm" 
@@ -143,7 +140,32 @@
       </option>
     </select>
   </div>
+
+  <!-- Botón en la parte inferior centrado -->
+<div 
+  class="position-absolute bottom-0 start-50 translate-middle-x mb-2 d-flex gap-2"
+  style="z-index: 2;"
+>
+  <button 
+  class="btn btn-sm text-white"
+  [routerLink]="['/autorizar', cursos.SECUENCIALCURSO]"
+  style="font-size: 12px; background-color: tomato;"
+>
+  Pendientes
+</button>
+
+<button 
+  class="btn btn-success btn-sm"
+  [routerLink]="['/registrados', cursos.SECUENCIALCURSO]"
+  style="font-size: 12px;"
+>
+  Registrados
+</button>
+
 </div>
+
+</div>
+
 
 
 

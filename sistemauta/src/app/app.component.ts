@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from './services/user.service';
-
+import { global } from './services/global'; 
 
 @Component({
   selector: 'app-root',
@@ -15,11 +15,14 @@ export class AppComponent implements OnInit, DoCheck {
   public status: string ="";
   public Rol: string ="";
   public principio:any;
+  public Id:any;
+  
   public valoresp:any;
     public is_login:boolean=false;
   public is_admin:boolean=false;
    public is_alerta:boolean=true;
 public departamentosp:any;
+ public urlStorage: string;
 
   constructor(public _UserService: UserService)
   {
@@ -28,6 +31,7 @@ public departamentosp:any;
   this.is_admin=false;
   this.identity = this._UserService.getIdentity();
   this.token = this._UserService.getToken();
+  this.urlStorage = global.storage;
   }
 
   ngOnInit()
@@ -40,7 +44,10 @@ public departamentosp:any;
     this.is_login=false;
    this.is_admin=false;
   }
-
+  
+  onError(event: Event) {
+    (event.target as HTMLImageElement).src = 'http://www.sistemautagrupo81.com/storage/avatar.jpg';
+  }
 
   //metodo que se ejecuta cada vez que ocurra algo
   ngDoCheck()
@@ -67,6 +74,7 @@ response => {
 {
 this.valoresp = response.user;
 this.Rol=this.valoresp.role;
+this.Id=this.valoresp.id;
 
 if(this.Rol=='ADMINISTRADOR')
 {
