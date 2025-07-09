@@ -38,9 +38,8 @@ export class CursosadminComponent implements OnInit {
     this.urlStorage = global.storage;
     this.urlApi = global.url;
   }
-//Primera funcion que s eejecuta por defecto al acargar una trasaccion
+
   ngOnInit() {
-    alert('Bienvenido a la administración de cursos');
     this.getCursosAdmin();
   }
 
@@ -56,6 +55,7 @@ export class CursosadminComponent implements OnInit {
       response => {
         if (response.status == "success") {
           this.cursosp = response.cursos;
+          console.log(this.cursosp);
           for (let array of this.cursosp) {
             this.totalcursos = array.TOTAL;
           }

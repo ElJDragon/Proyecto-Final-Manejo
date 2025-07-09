@@ -58,6 +58,18 @@ getEventos(usuario: any):Observable<any>{
 	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
 	 	return this._http.get(this.url+'disponibles/'+usuario, {headers:headers});
 	 }
+getRegistrados(evento: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'registradosa/'+evento, {headers:headers});
+	 }
+getRegistradosP(evento: any,parametro: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'registradospp/'+evento+'/'+parametro, {headers:headers});
+	 }
+getEventosCodigo(codigo: any):Observable<any>{
+	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+	 	return this._http.get(this.url+'eventocod/'+codigo, {headers:headers});
+	 }
 
 getEventosR(evento: any):Observable<any>{
 	 	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
@@ -81,10 +93,31 @@ getEventosP(nombre: any):Observable<any>{
 	return this._http.put(this.url +'updatecurso/'+codigo, params, {headers:headers});			
 	 }
 	 
-	 //borrar
 
 
+	 	 updateRegistros(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateRegistro/'+codigo,{headers:headers});			
+	 }
 
 
+	 	 updateAprobar(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateAprobado/'+codigo,{headers:headers});			
+	 }
+
+	 	 	 updateReprobar(token: any,codigo: any):Observable<any>
+	 {
+
+	let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+								   .set('Authorization',token);
+	return this._http.put(this.url +'updateReprobado/'+codigo,{headers:headers});			
+	 }
 
 }
