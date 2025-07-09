@@ -18,8 +18,9 @@ public opcionSeleccionada: string = '';
 public campoEntrada: string = '';
 public is_edit:boolean=true;
 public isigual:boolean=true;
+public iscontrasena:boolean=true;
 public istemporal:boolean=true;
-
+public passwordError: any;
 public bandera:boolean=true;
 
 public token: string ="";
@@ -29,7 +30,7 @@ constructor(private _UserService: UserService,
             private _router: Router,  
             private _route: ActivatedRoute){
   this.page_tittle='Regístrate';
-  this.user = new User(1,'', '', '', '', '', '');
+  this.user = new User(1,'','', '', '', '', '', '');
 }
 
 
@@ -54,12 +55,37 @@ ngOnInit()
 
   this.logout();
 }
+
+passwordStrong(password: string): boolean {
+  const hasNumber   = /\d/.test(password);                         // comprueba dígito
+  const hasSpecial  = /[!@#$%^&*(),.?":{}|<>]/.test(password);     // comprueba carácter especial
+  return hasNumber && hasSpecial;
+}
+
+
 //registro
 onSubmit(form: any){
-  this.user['role']='ADMINISTRADOR';
+  this.user['role']='ESTUDIANTE';
+
+ if (!this.passwordStrong(this.user['Password'])) {
+    this.iscontrasena = false; 
+    setTimeout(() => {
+this.iscontrasena = true; 
+            }, 3000);
+  }
+  else
+  {
+    this.iscontrasena = true;
+
+
+
+
 if(this.user['Password']!=this.user['Password2'])
 {
 this.isigual=false;
+    setTimeout(() => {
+this.isigual = true; 
+            }, 3000);
 }
 else
 {
@@ -105,6 +131,10 @@ this.status='erroremail';
 
     );
 }
+
+  }
+
+
   
 }
 
