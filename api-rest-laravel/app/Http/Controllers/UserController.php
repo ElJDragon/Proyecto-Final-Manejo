@@ -172,6 +172,8 @@ $secuenciagenerada='';
     //INSERTAR PERSONA USUARIO
     $responsable=new Personas();
     $responsable->EMAIL= $params_array['Email'];
+    $responsable->NOMBRES= $params_array['Nombre'];
+    $responsable->APELLIDOS= $params_array['Apellido'];
     $responsable->USUARIO= $secuenciagenerada;
 if ($responsable->save()) {
 
@@ -524,6 +526,7 @@ $integer =0;
           unset($params_array['Password']);
          unset($params_array['Password2']);  
          unset($params_array['image']);  
+         unset($params_array['Apellido']);  
 
          
 

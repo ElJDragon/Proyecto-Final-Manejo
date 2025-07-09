@@ -46,14 +46,39 @@ Route::get('/api/getUserid/{id}',['\App\Http\Controllers\UserController', 'getUs
 
 
 
+
 //RUTAS PARA TIPOS EVENTOS
 Route::get('/api/tiposeventos',['\App\Http\Controllers\CTiposdeEventos', 'consultarEventos']);
 Route::get('/api/eventosLike/{id}',['\App\Http\Controllers\CTiposdeEventos', 'eventosLike']);
 Route::put('/api/updateEvento/{id}',['\App\Http\Controllers\CTiposdeEventos', 'updateEventos']);
 Route::delete('/api/eliminaeventos/{id}',['\App\Http\Controllers\CTiposdeEventos', 'eliminarEventos']);
 Route::post('/api/nuevaEvento',['\App\Http\Controllers\CTiposdeEventos', 'nuevoEvento']);
+Route::put('/api/updateRegistro/{id}',['\App\Http\Controllers\CursosController', 'updateRegistro']);
 
 
+Route::put('/api/updateAprobado/{id}',['\App\Http\Controllers\CursosController', 'updateAprobado']);
+Route::put('/api/updateReprobado/{id}',['\App\Http\Controllers\CursosController', 'updateReprobado']);
+
+//RUTAS PARA TIPOS DOCUMENTOS
+Route::get('/api/tiposdocumento',['\App\Http\Controllers\CTiposDocumentos', 'consultarDocumentos']);
+Route::get('/api/tiposdocumentoAdj/{id}',['\App\Http\Controllers\CTiposDocumentos', 'tiposdocumentoAdj']);
+Route::get('/api/tiposdocumentoAdjP/{id}',['\App\Http\Controllers\CTiposDocumentos', 'tiposdocumentoAdjP']);
+
+Route::get('/api/documentosLike/{id}',['\App\Http\Controllers\CTiposDocumentos', 'documentosLike']);
+Route::get('/api/documentoP/{id}',['\App\Http\Controllers\CTiposDocumentos', 'documentosP']);
+
+Route::get('/api/documentosPP/{id}/{persona}/{curso}',['\App\Http\Controllers\CTiposDocumentos', 'documentosPP']);
+
+Route::put('/api/updateDocumento/{id}',['\App\Http\Controllers\CTiposDocumentos', 'updateDocumentos']);
+
+Route::delete('/api/eliminadocumentos/{id}',['\App\Http\Controllers\CTiposDocumentos', 'eliminarDocumento']);
+Route::delete('/api/eliminaadjuntos/{documento}/{persona}',['\App\Http\Controllers\CTiposDocumentos', 'eliminaadjuntos']);
+Route::delete('/api/eliminaevedocumentos/{evento}/{documento}',['\App\Http\Controllers\CTiposDocumentos', 'eliminarEveDoc']);
+
+Route::post('/api/nuevoDocumento',['\App\Http\Controllers\CTiposDocumentos', 'nuevoDocumento']);
+Route::post('/api/nuevoEveDocumento',['\App\Http\Controllers\CTiposDocumentos', 'nuevoEveDocumento']);
+Route::post('/api/nuevoAdjunto',['\App\Http\Controllers\CTiposDocumentos', 'nuevoAdjunto']);
+Route::post('/api/nuevoPago',['\App\Http\Controllers\CTiposDocumentos', 'nuevoPago']);
 
 //RUTAS PARA TIPOS CARRERAS
 Route::get('/api/carreras',['\App\Http\Controllers\CCarreras', 'consultarCarreras']);
@@ -71,6 +96,13 @@ Route::delete('/api/eliminaPersona/{id}',['\App\Http\Controllers\CPersonas', 'el
 
 
 
+//RUTAS PARA MISION VISION
+Route::get('/api/mision',['\App\Http\Controllers\CMisionVision', 'consultarMision']);
+Route::put('/api/updateMision/{id}',['\App\Http\Controllers\CMisionVision', 'updateMision']);
+
+
+
+
 
 //PERFIL DE USUARIO
 
@@ -80,6 +112,8 @@ Route::get('/api/cantones/{codigo}',['\App\Http\Controllers\ProfileController', 
 Route::post('/api/insertDireccion',['\App\Http\Controllers\ProfileController', 'insertDireccion']);
 Route::get('/api/direccion/{usuario}',['\App\Http\Controllers\ProfileController', 'getDireccion']);
 Route::get('/api/datospersona/{usuario}',['\App\Http\Controllers\ProfileController', 'getdatospersona']);
+Route::get('/api/datosregistro/{evento}/{usuario}',['\App\Http\Controllers\ProfileController', 'datosregistro']);
+
 Route::put('/api/updatePerson/{id}',['\App\Http\Controllers\ProfileController', 'updatePerson']);
 
 
@@ -91,6 +125,11 @@ Route::post('/api/nuevoParametro',['\App\Http\Controllers\CursosController', 'nu
 Route::post('/api/nuevoRegistro',['\App\Http\Controllers\CursosController', 'nuevoRegistro']);
 Route::get('/api/cursosadmin',['\App\Http\Controllers\CursosController', 'getcursosadmin']);
 Route::get('/api/disponibles/{usuario}',['\App\Http\Controllers\CursosController', 'disponibles']);
+
+Route::get('/api/registradosa/{evento}',['\App\Http\Controllers\CursosController', 'registradosa']);
+Route::get('/api/registradospp/{evento}/{parametro}',['\App\Http\Controllers\CursosController', 'registradospp']);
+
+Route::get('/api/eventocod/{codigo}',['\App\Http\Controllers\CursosController', 'eventocod']);
 Route::get('/api/disponiblesp/{usuario}',['\App\Http\Controllers\CursosController', 'disponiblesp']);
 
 Route::get('/api/registrados/{curso}',['\App\Http\Controllers\CursosController', 'registrados']);
@@ -98,8 +137,12 @@ Route::get('/api/registrados/{curso}',['\App\Http\Controllers\CursosController',
 Route::put('/api/updatecurso/{codigo}',['\App\Http\Controllers\CursosController', 'updatecurso']);
 
 
+
+
 //carga de archivos
+Route::post('/api/upload/{id}', ['\App\Http\Controllers\FilesController', 'upload'])->name('file.upload');
 Route::post('/api/cursos/{id}', ['\App\Http\Controllers\FilesController', 'cursos'])->name('file.cursos');
 Route::post('/api/profile/{id}', ['\App\Http\Controllers\FilesController', 'profile'])->name('file.profile');
 Route::post('/api/bienvenida/{id}', ['\App\Http\Controllers\FilesController', 'bienvenida'])->name('file.bienvenida');
-
+Route::post('/api/adjuntos/{id}', ['\App\Http\Controllers\FilesController', 'adjuntos'])->name('file.adjuntos');
+Route::get('/api/download/{filename}', ['\App\Http\Controllers\FilesController', 'download'])->name('file.serve');
