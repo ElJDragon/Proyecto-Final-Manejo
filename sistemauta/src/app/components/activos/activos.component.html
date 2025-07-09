@@ -37,28 +37,6 @@
 <body>
 
 
-        <!-- MODAL PARA REGISTRAR -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-<div style="background-image: url('/assets/img/carreter.jpg'); background-size: cover; background-position: center; height: 24vh; margin: 0; ">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Está seguro de Registrarse en este Evento
-      </div>
-      <div class="modal-footer">
- <a style="background-color: #B9C585;" class="btn-redondeado" data-dismiss="modal">Cerrar</a>
-&nbsp;&nbsp;            
- <a (click)="registrar()" class="btn-redondeado">Aceptar<i class="fa fa-arrow-right ms-3"></i></a>
-
-
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -92,7 +70,7 @@
 <table>
     <tr>
        <td colspan="2">
-             <div routerLink="/sumarinv/{{eventop.ID}}"  class="red-box" align="left">
+             <div class="red-box" align="left">
     <span class="number">{{eventop.NOMBRECURSO}}</span>
 
 
@@ -150,7 +128,7 @@
         <td colspan="2">
 
 
-<!-- Si NO está registrado (0) -->
+<!-- 
 <a *ngIf="eventop.REGISTRADO == 0"
    (click)="pasarvalores(eventop.SECUENCIALCURSO)"
    data-toggle="modal"
@@ -158,11 +136,11 @@
    class="btn-redondeado btn btn-danger">
    Registrar
 </a>
-
-<!-- Si está registrado (1) -->
-<a *ngIf="eventop.REGISTRADO == 1"
-   class="btn-succes">
-   REGISTRADO
+-->
+<a 
+   [routerLink]="['/detalle', eventop.SECUENCIALCURSO]"
+   class="btn-redondeado btn btn-succes">
+   Detalle
 </a>
 
 

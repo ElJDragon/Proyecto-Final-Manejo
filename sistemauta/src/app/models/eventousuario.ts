@@ -4,7 +4,8 @@ constructor (public CODIGO:string,
 			 public CURSO:string,
 			 public CALIFICACION:string,
 			 public ASISTENCIA:string,
-			 public FECHA:string
+			 public FECHA:string,
+			 public ESTADO:string
 			 
 			 )
 {

@@ -192,27 +192,17 @@ Creación de un Nuevo Evento
 
                              <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
 
-                          <button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
-
+                          <!--<button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+                          -->
 
 
                           <button   style="display:none"  class="btn btn-primary px-6 px-sm-6" type="submit" data-wizard-next-btn="data-wizard-next-btn">ccccc<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
                         </div>
-                        </div>
-
-
-
-
-<!--PASO DOS--------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------ -->
-<!-- ------------------------------------------------------------------------ -->
-
 
 
 <!--MOSTRAR EL PRIMER FORMULARIOS *ngIf="mostrardos" -->
-<div  *ngIf="mostrardos" class="tab-pane active" role="tabpanel" aria-labelledby="bootstrap-wizard-tab1" id="bootstrap-wizard-tab1">
                            <form class="needs-validation" id="wizardValidationForm1" novalidate="novalidate" data-wizard-form="1">
-
+                           
 <div class="mb-2 form-check">
   <input 
     type="checkbox" 
@@ -295,8 +285,9 @@ Creación de un Nuevo Evento
 
                              <label *ngIf="guardarcurso" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Datos guardados con éxito</label>
 
-                          <button  *ngIf="botoncurso" (click)="guardarParametros(valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
-
+                          <!--<button  *ngIf="botoncurso" (click)="guardarParametros(valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+--><button  *ngIf="botoncurso" (click)="guardarCurso(nombrecurso.value,valor.value,calificacion.value,horas.value)" class="btn btn-primary px-6 px-sm-6"  >Guardar<span class="fas fa-chevron-right ms-1" data-fa-transform="shrink-3"> </span></button>
+  
                         </div>
 
 
@@ -314,7 +305,7 @@ Creación de un Nuevo Evento
 
 
 
-<div *ngIf="mostrartres">
+<div *ngIf="mostrardos">
                               <div class="text-center text-sm-start"><img class="d-dark-none" src="../../assets/img/spot-illustrations/38.webp" alt="" width="220" />
                                 <br>
 <label *ngIf="fincurso"  class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Curso creado con éxito</label>
@@ -325,7 +316,7 @@ Creación de un Nuevo Evento
                             <div class="col-12 col-sm-auto">
                               <div class="text-center text-sm-start">
                                 <h5 class="mb-3">Finalizar Creación!</h5>
-                                <p class="text-body-emphasis fs-9">Recuerde Habilitar el curso<br />en la opción de Mantenimiento</p><a class="btn btn-primary px-6" (click)="fincursos()">Finalizar</a>
+                                <p class="text-body-emphasis fs-9">Recuerde Habilitar el curso<br />en la opción de Mantenimiento</p>
                               </div>
                             </div>
 </div>

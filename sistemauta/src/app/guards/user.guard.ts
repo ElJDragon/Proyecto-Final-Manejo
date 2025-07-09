@@ -20,7 +20,7 @@ export class UserGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
 
-    if (this.authService.isAdmin('RESPONSABLE')) {
+    if (this.authService.isAdmin('ESTUDIANTE')) {
       return true;
     } else {
       this.router.navigate(['/unauthorized']); // Redirigir a una página de acceso no autorizado

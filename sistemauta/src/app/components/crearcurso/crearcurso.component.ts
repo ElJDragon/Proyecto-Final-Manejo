@@ -40,6 +40,10 @@ public parametroasi:any;
   public mostrardos: boolean = false;
   public mostrartres: boolean = false;
 
+  public valornuevo: any ;
+  public calificacionnuevo: any;
+  public horasnuevo: any;
+
   public botoncurso: boolean = true;
   public guardarcurso: boolean = false;
   public mostrarimagen: boolean = true;
@@ -126,7 +130,11 @@ public parametroasi:any;
 
 
 
-  guardarCurso($nombre: any) {
+  guardarCurso($nombre: any,$valor: any,$calificacion: any,$horas: any) {
+    this.valornuevo = $valor;
+    this.calificacionnuevo = $calificacion;
+    this.horasnuevo = $horas;
+
     if ($nombre != '') {
       this.cursos = new Cursos('', this.codigoEventop, this.codigoCarrerap, '', $nombre, '0');
       this._cursosService.guardarCurso(this.cursos).subscribe(
@@ -230,6 +238,7 @@ EventoAsistencia(event: Event) {
       this.http.post(this.urlApi + 'cursos/' + this.imagenasignada + '.', formData).subscribe(
         response => {
           console.log('Archivo subido correctamente:', response);
+          this.guardarParametros(this.valornuevo, this.calificacionnuevo, this.horasnuevo);
         },
         error => {
           console.error('Error al subir archivo:', error);

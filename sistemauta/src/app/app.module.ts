@@ -34,6 +34,17 @@ import { ActivosComponent } from './components/activos/activos.component';
 import { SeguimientoComponent } from './components/seguimiento/seguimiento.component';
 import { RegistradosComponent } from './components/registrados/registrados.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
+import { TiposdocumentosComponent } from './components/tiposdocumentos/tiposdocumentos.component';
+import { CreadocumentosComponent } from './components/creadocumentos/creadocumentos.component';
+import { EventodocumentosComponent } from './components/eventodocumentos/eventodocumentos.component';
+import { SubirdocumentosComponent } from './components/subirdocumentos/subirdocumentos.component';
+import { AutorizarComponent } from './components/autorizar/autorizar.component';
+import { DocumentosComponent } from './components/documentos/documentos.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { PorautorizarComponent } from './components/porautorizar/porautorizar.component';
+import { DetdocumentosComponent } from './components/detdocumentos/detdocumentos.component';
+import { CalificacionComponent } from './components/calificacion/calificacion.component';
+import { MisionvisionComponent } from './components/misionvision/misionvision.component';
 
 
 @NgModule({
@@ -57,7 +68,18 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     ActivosComponent,
     SeguimientoComponent,
     RegistradosComponent,
-    ReporteComponent
+    ReporteComponent,
+    TiposdocumentosComponent,
+    CreadocumentosComponent,
+    EventodocumentosComponent,
+    SubirdocumentosComponent,
+    AutorizarComponent,
+    DocumentosComponent,
+    DetalleComponent,
+    PorautorizarComponent,
+    DetdocumentosComponent,
+    CalificacionComponent,
+    MisionvisionComponent
   ],
   imports: [
     BrowserModule,

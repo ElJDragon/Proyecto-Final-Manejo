@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CursosService } from '../../services/cursos.service';
 import { global } from '../../services/global';
-import { Eventousuario } from '../../models/eventousuario';
+
 
 @Component({
   selector: 'app-activos',
@@ -17,11 +17,10 @@ export class ActivosComponent implements OnInit {
   public identity: string = "";
   public status: string = "";
   public cursosp: any;
-  public parametrofecha: any;
   
-  public registrocur: any;
+  
   public urlStorage: string = "";
-  public eventp: Eventousuario;
+
   
    public registroo: boolean = false;
 
@@ -34,7 +33,7 @@ export class ActivosComponent implements OnInit {
     this.identity = this._UserService.getIdentity();
     this.token = this._UserService.getToken();
     this.urlStorage = global.storage;
-    this.eventp = new Eventousuario('', '', '', '', '', '');
+
   }
 
   ngOnInit() {
@@ -53,6 +52,7 @@ export class ActivosComponent implements OnInit {
       response => {
         if (response.status == "success") {
           this.cursosp = response.cursos;
+          console.log(this.cursosp);
         } else {
           this.status = 'error1';
         }
@@ -64,36 +64,6 @@ export class ActivosComponent implements OnInit {
     );
   }
 
-pasarvalores($codigocurso: any)
-{
-this.registrocur=$codigocurso;
-}
 
 
-  registrar() {
-    
-    this.parametrofecha = new Date();
-    
-this.eventp = new Eventousuario('', this.identity.sub.toString(), this.registrocur, '', '', this.parametrofecha.toISOString().split('T')[0]);
-
-    this._cursosService.guardarRegistro(this.eventp).subscribe(
-      response => {
-        if (response) {
-          this.status = 'success';
-          this.registroo = true;
-
-          setTimeout(() => {
- this.registroo = false;
-this.getEventosActivos();
-          }, 3000);
-        } else {
-          this.status = 'error';
-        }
-      },
-      error => {
-        this.status = 'error';
-        console.log(<any>error);
-      }
-    );
-  }
 }

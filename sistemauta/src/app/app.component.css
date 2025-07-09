@@ -1,5 +1,12 @@
 
 
+.dropdown-menu.dropdown-profile .card-body,
+.dropdown-menu.dropdown-profile .card-footer {
+  padding: 0.5rem 1rem;
+}
+
+
+
 @keyframes clouds {
   from { background-position: 0 0; }
   to { background-position: 200% 0; }
