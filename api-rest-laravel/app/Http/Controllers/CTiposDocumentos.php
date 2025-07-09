@@ -73,19 +73,13 @@ if ($personas->isNotEmpty()) {
     $resultado = 0;
 }
 
-$codigoadj='';
- foreach($personas as $personaC)
-                {
- $codigoadj = $personaC->CODIGO;
-                }
 
 
          $tipos[$variable] = array(     
              'CODIGO'=>trim($evento->CODIGO),
               'NOMBRE'=>trim($evento->NOMBRE),
               'FORMATO'=>trim($evento->FORMATO),
-              'ADJUNTO'=>$resultado,
-              'CODADJUNTO'=>$codigoadj
+              'ADJUNTO'=>$resultado
               );
          $variable++;
                 }
