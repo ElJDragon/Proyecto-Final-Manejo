@@ -1,0 +1,240 @@
+<html>
+<head>
+  </head>
+  <body>
+
+  <section id="contact" class="contact">
+
+
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <iframe id="pdfFrame" src="" width="100%" height="500px"></iframe>
+  </div>
+</div>
+
+        <!-- MODAL PARA ELIMINAR -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+<div style="background-image: url('/assets/img/carreter.jpg'); background-size: cover; background-position: center; height: 24vh; margin: 0; ">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Está seguro de eliminar el Documento
+      </div>
+      <div class="modal-footer">
+         <a style="background-color: #B9C585;" class="btn-redondeado" data-dismiss="modal">Cerrar</a>
+&nbsp;&nbsp;            
+ <a (click)="eliminarEvento()" class="btn-redondeado">Eliminar<i class="fa fa-arrow-right ms-3"></i></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+
+
+  <div class="row mt-5">
+
+
+<div class="row">
+
+
+
+          <div  class="col-xs-6 text-center">
+
+            <form action="forms/contact.php" method="post" role="form" class=" info php-email-form">
+              
+<span class="texto-borde">Carga de Documentos</span>
+             <hr>
+             <br>
+<div class="row d-flex justify-content-center">
+
+
+
+<label *ngIf="guardardocumentos" class="form-label" for="bootstrap-wizard-gender" style="color: #369712;">Documentos guardado con éxito</label>
+<table class="table table-bordered">
+  <thead class="col-lg-4">
+    <tr  align="center" >
+      <th class="col-0" >
+      <a *ngIf="isbusqueda" style="color:#000" (click)="ngOnInit()" class="get-started-btn scrollto"><img width="45" height="28" src="/assets/img/limpiar.png"></a>
+      </th> 
+      <th class="col-6">
+        <input   (keyup)="getTiposDocumentosParametros()" style="text-transform:uppercase; border-color:#D81324; width: 210px; height:30px;" type="text" name="nombres" class="form-control"  id="pnombres">
+
+
+      </th>
+
+      <th class="col-1">
+
+
+        <p class="mb-0 fs-9 text-body-tertiary text-opacity-85 lh-sm">
+                    Documento en formato .pdf
+                </p></th>
+      <th class="col-3">
+        
+        <button *ngIf="botondocumentos" (click)="guardarAdjuntos()" class="btn btn-primary px-6 px-sm-6" type="submit" >Subir</button>
+      </th>
+    </tr>
+    <tr align="center">
+      <th class="col-0">Código</th>
+      <th class="col-4">Nombre</th>
+      <th class="col-4">Subir</th>
+      <th class="col-4">Documento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let evento of paginacion">
+    
+      <th class="col-0" style=" font-size:100%">{{evento.CODIGO}}</th>
+
+
+      <td *ngIf="this.codigomodificar!=evento.CODIGO" class="col-2" style="font-size:80%">{{evento.NOMBRE}}</td>
+
+
+
+
+
+
+      <td *ngIf="this.codigomodificar!=evento.CODIGO && 1!=evento.ADJUNTO" class="col-2" style="font-size:80%">
+        
+
+   <div class="col-md" >
+        <div class="dz-message dropzone-area px-2 py-3" data-dz-message="data-dz-message">
+            <div class="text-center text-body-emphasis" (click)="triggerFileInput(evento.CODIGO)">
+                <h5 class="mb-2">
+                    <span class="fas fa-upload me-2"></span>
+                    Subir Documento Adjunto
+                </h5>
+                <input #fileInput class="d-none" type="file" (change)="onFileChange($event)" accept="application/pdf"/>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+      </td>
+
+<td *ngIf="this.codigomodificar!=evento.CODIGO && 1==evento.ADJUNTO" class="col-2" style="font-size:80%">
+</td>
+
+
+<td *ngIf="1==evento.ADJUNTO">
+                  <div  class="swiper-slide w-sm-auto"  >
+                  <a class="position-relative rounded-3 overflow-hidden d-block" >
+                  <img src="../../assets/img/adjunto1.png" alt="" height="50" width="50" />
+                    <div class="img-backdrop-faded">
+                      <div class="image-reveal-content mb-3">
+                        <div   class="d-flex align-items-center gap-2 mb-2">
+
+
+<div>
+  <a class="mb-0 text-secondary-lighter fw-semibold" href="#" 
+     (click)="openModal(urlAdjuntos + evento.CODIGO + '.' + evento.FORMATO, $event)">
+    VER
+  </a>
+
+  <a title="Eliminar" (click)="codigoEvento(evento.CODIGO)" data-toggle="modal" data-target="#exampleModal" class="get-started-btn scrollto" style="padding: 0px 8px 2px 5px;"><img data-toggle="modal"  data-target="#exampleModal" width="15" height="15" src="/assets/img/eliminar.jpg" (click)="codigoEvento(evento.CODIGO)" ></a>
+</div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </a></div>
+</td>
+
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div *ngIf="solo1">
+<br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo2">
+<br><br><br><br><br><br><br>
+</div>
+<div *ngIf="solo3">
+<br><br><br><br><br>
+</div>
+<div *ngIf="solo4">
+<br><br><br>
+</div>
+
+<div *ngIf="solo5">
+<br><br>
+</div>
+
+<table>
+
+
+
+<th *ngIf="ispaginacion"  >
+    <nav aria-label="Page navigation example" >
+
+  <ul class="pagination" >
+    
+    <li *ngIf="atras" class="page-item"  ><a class="page-link" (click)="Paginacion(0)">        
+      <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    <li *ngIf="!atras" class="page-item disabled"><a class="page-link">        <img width="20" height="20" src="/assets/img/anterior.png"></a></li>
+    
+    <li *ngIf="uno" class="page-item active"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+    <li *ngIf="!uno" class="page-item"><a class="page-link" (click)="Paginacion(1)">1</a></li>
+
+    <li *ngIf="dos && dosd" class="page-item active" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dos && dosd" class="page-item" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+    <li *ngIf="!dosd" class="page-item disabled" ><a class="page-link" (click)="Paginacion(2)">2</a></li>
+
+
+    <li *ngIf="tres && tresd" class="page-item active"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tres && tresd" class="page-item"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    <li *ngIf="!tresd" class="page-item disabled"><a class="page-link" (click)="Paginacion(3)">3</a></li>
+    
+
+      <li *ngIf="delante" class="page-item"><a class="page-link" (click)="Paginacion(4)">
+        <img width="20" height="20" src="/assets/img/siguiente.png">
+      </a>
+      <li *ngIf="!delante" style="color:#E4A42B" class="page-item disabled"><a class="page-link"><img width="20" height="20" src="/assets/img/siguiente.png"></a>
+    </li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<img title="Ingresar Nuevo" routerLink="/creamarca/" width="40" height="40" src="/assets/img/agregar.png">
+
+
+  </ul>
+
+</nav>
+</th>
+
+
+
+</table>
+</div>
+
+
+            </form>
+
+          </div>
+</div>
+        </div>
+
+
+
+</form>
+
+    </section><!-- End Contact Section -->
+  </body>
+  </html>
+

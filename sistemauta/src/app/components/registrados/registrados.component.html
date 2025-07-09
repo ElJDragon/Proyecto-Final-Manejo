@@ -46,7 +46,7 @@
       <th class="col-1"></th>
       
       <th class="col-1">
-        <input   (keyup)="getVehiculosParametros()" style="text-transform:uppercase; border-color:#D81324; width: 150px; height:30px;" type="text" name="nombres" class="form-control"  id="pnombres" placeholder="Nombre">
+        <input   (keyup)="getRegistradosParametros()" style="text-transform:uppercase; border-color:#D81324; width: 150px; height:30px;" type="text" name="nombres" class="form-control"  id="pnombres" placeholder="Nombre">
       </th>
 
 
@@ -57,8 +57,8 @@
       <th class="col-1">Nombre Evento</th>
       <th class="col-0">Indentificacion</th>
       <th class="col-1">Nombre</th>
-      <th class="col-3">Fecha de Registro</th>
-      
+      <th class="col-1">Fecha de Registro</th>
+      <th class="col-1">Editar</th>
     </tr>
   </thead>
   <tbody>
@@ -73,9 +73,14 @@
       <td  class="col-2" style="font-size:80%">{{eventos.IDENTIFICACION}}</td>
       <td  class="col-2" style="font-size:80%">{{eventos.NOMBRES}}</td>
 
-    <td  class="col-2" style="font-size:80%">{{eventos.FECHA}}</td>
+    <td  class="col-1" style="font-size:80%">{{eventos.FECHA}}</td>
     
+  <td  class="col-1" style="font-size:80%">
+    
+    <a   title="Detalles" routerLink="/calificacion/{{eventos.SECUENCIALCURSO}}/{{eventos.USUARIO}}" class="get-started-btn scrollto" style="padding: 0px 8px 2px 5px;"><img   width="25" height="25" src="/assets/img/asignar.png" ></a>
 
+  </td>
+    
 
 </tr>
   </tbody>
