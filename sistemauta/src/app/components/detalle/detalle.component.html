@@ -129,8 +129,9 @@
                   <div class="d-flex flex-between-center pt-4">
                     <div>
                       <h6 class="mb-2 text-body-secondary">Estado del Registro</h6>
-                      <h4 class="fs-7 text-body-highlight mb-0">{{this.estadoDET}}</h4>
-
+                      
+                      <h4 *ngIf="certificado!='1'"class="fs-7 text-body-highlight mb-0">{{this.estadoDET}}</h4>
+<h4 *ngIf="certificado=='1'"class="fs-7 text-body-highlight mb-0">APROBADO</h4>
                       <br>
                      
                        <div   *ngIf="registroo">
